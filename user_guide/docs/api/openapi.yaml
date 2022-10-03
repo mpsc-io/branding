@@ -668,7 +668,7 @@ components:
           type: string
         meta:
           type: object
-      examples:
+      x-examples:
         - code: 503
           reason: the conference already exists
           meta:

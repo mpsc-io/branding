@@ -1,9 +1,3 @@
----
-sidebar_position: 1
-id: api
-slug: /api
----
-
 # Documentation for HooT-API
 
 <a name="documentation-for-api-endpoints"></a>
@@ -36,19 +30,19 @@ Class | Method | HTTP request | Description
 <a name="documentation-for-models"></a>
 ## Documentation for Models
 
- - [conference](Models/conference.md)
- - [coremx](Models/coremx.md)
- - [entity](Models/entity.md)
- - [error](Models/error.md)
- - [inline_object](Models/inline_object.md)
- - [inline_object_1](Models/inline_object_1.md)
- - [inline_object_2](Models/inline_object_2.md)
- - [inline_response_200](Models/inline_response_200.md)
- - [inline_response_200_1](Models/inline_response_200_1.md)
- - [participant](Models/participant.md)
- - [partyconf](Models/partyconf.md)
- - [sip](Models/sip.md)
- - [user](Models/user.md)
+ - [conference](./Models/conference.md)
+ - [coremx](./Models/coremx.md)
+ - [entity](./Models/entity.md)
+ - [error](./Models/error.md)
+ - [inline_object](./Models/inline_object.md)
+ - [inline_object_1](./Models/inline_object_1.md)
+ - [inline_object_2](./Models/inline_object_2.md)
+ - [inline_response_200](./Models/inline_response_200.md)
+ - [inline_response_200_1](./Models/inline_response_200_1.md)
+ - [participant](./Models/participant.md)
+ - [partyconf](./Models/partyconf.md)
+ - [sip](./Models/sip.md)
+ - [user](./Models/user.md)
 
 
 <a name="documentation-for-authorization"></a>
