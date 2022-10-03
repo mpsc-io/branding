@@ -9,7 +9,7 @@ const config = {
   title: 'HooT',
   tagline: 'The World is a Conference! Collaboration for Everyone!',
   url: 'https://mpsc-io.github.io',
-  baseUrl: '/branding/',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/hoot_icon.png',
