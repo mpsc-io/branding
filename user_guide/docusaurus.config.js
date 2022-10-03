@@ -7,8 +7,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'HooT',
-  tagline: 'The World is a Conference! Collaboration for Everyone!',
-  url: 'https://mpsc-io.github.io',
+  tagline: 'Powered by mpsc.io, cloud-native, API driven collaboration-engine',
+  url: 'https://hoot.mx',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -41,6 +41,8 @@ const config = {
           // Remove this to remove the "edit this page" links.
           // editUrl:
           //   'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          docLayoutComponent: "@theme/DocPage",
+          docItemComponent: "@theme/ApiItem"
         },
         // blog: {
         //   showReadingTime: true,
@@ -57,6 +59,22 @@ const config = {
     ],
   ],
 
+  plugins: [
+    [
+      'docusaurus-plugin-openapi-docs',
+      {
+        id: "apiDocs",
+        docsPluginId: "classic",
+        config: {
+          hoot: {
+            specPath: "api/openapi.yaml", // Path to designated spec file
+            outputDir: "api/hoot", // Output directory for generated .mdx docs
+          }
+        }
+      },
+    ]
+  ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -69,16 +87,33 @@ const config = {
         items: [
           {
             type: 'doc',
+            docId: 'design',
+            position: 'left',
+            label: 'Design',
+          },
+          {
+            type: 'doc',
+            docId: 'api/api',
+            position: 'left',
+            label: 'API',
+          },
+          {
+            type: 'doc',
             docId: 'intro',
             position: 'left',
-            label: 'App',
+            label: 'Mobile App',
           },
           // {to: '/api', label: 'API', position: 'left'},
-          // {
-          //   href: 'https://github.com/facebook/docusaurus',
-          //   label: 'GitHub',
-          //   position: 'right',
-          // },
+          {
+            position: 'right',
+            label: 'Development',
+            href: 'https://dev.hoot.mx/',
+          },
+          {
+            position: 'right',
+            label: 'Mitsubishi-MELCO',
+            href: 'https://melco.hoot.mx/',
+          },
         ],
       },
       footer: {
@@ -96,19 +131,15 @@ const config = {
           //   ],
           // },
           // {
-          //   title: 'Community',
+          //   title: 'Deployments',
           //   items: [
           //     {
-          //       label: 'Stack Overflow',
-          //       href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+          //       label: 'Development',
+          //       href: 'https://dev.hoot.mx/',
           //     },
           //     {
-          //       label: 'Discord',
-          //       href: 'https://discordapp.com/invite/docusaurus',
-          //     },
-          //     {
-          //       label: 'Twitter',
-          //       href: 'https://twitter.com/docusaurus',
+          //       label: 'Mitsubishi-MELCO',
+          //       href: 'https://melco.hoot.mx/',
           //     },
           //   ],
           // },
@@ -135,6 +166,7 @@ const config = {
         darkTheme: darkCodeTheme,
       },
     }),
+  themes: ["docusaurus-theme-openapi-docs"],
 };
 
 module.exports = config;

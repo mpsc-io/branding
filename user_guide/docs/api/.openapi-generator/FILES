@@ -1,0 +1,16 @@
+.openapi-generator-ignore
+Apis/DefaultApi.md
+Models/conference.md
+Models/coremx.md
+Models/entity.md
+Models/error.md
+Models/inline_object.md
+Models/inline_object_1.md
+Models/inline_object_2.md
+Models/inline_response_200.md
+Models/inline_response_200_1.md
+Models/participant.md
+Models/partyconf.md
+Models/sip.md
+Models/user.md
+README.md
