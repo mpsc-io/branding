@@ -114,6 +114,11 @@ const config = {
             label: 'Mitsubishi-MELCO',
             href: 'https://melco.hoot.mx/',
           },
+          {
+            position: 'right',
+            label: 'Support',
+            href: 'mailto:hoot-support@mpsc.io?subject=%5BORG-Name%5D%20HooT%20Support%20Issue%20from%20ORG-Name'
+          },
         ],
       },
       footer: {
