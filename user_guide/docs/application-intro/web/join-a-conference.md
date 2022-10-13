@@ -1,7 +1,7 @@
 ---
 sidebar_position: 7
-id: join-a-conference
-slug: /join-a-conference
+id: join-a-conference-web
+slug: /join-a-conference-web
 ---
 
 # Join a conference
@@ -15,12 +15,3 @@ slug: /join-a-conference
 4. In case the conference doesn’t load check if the **URL is valid.**
 
 5. Contact the system administrator if you get any unexpected errors.
-
-![Figure 7.0](/img/join-conference1.png)
-<center><b>Figure 7.0</b></center>
-
-![Figure 7.1](/img/join-conference2.png)
-<center><b>Figure 7.1</b></center>
-
-![Figure 7.2](/img/join-conference3.png)
-<center><b>Figure 7.2</b></center>

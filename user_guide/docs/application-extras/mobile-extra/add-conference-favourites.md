@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
-id: add-conference-favourites
-slug: /add-conference-favourites
+id: add-conference-favourites-mobile
+slug: /add-conference-favourites-mobile
 ---
 
 # Add a conference to favourites

@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
-id: remove-conference-favourites
-slug: /remove-conference-favourites
+id: remove-conference-favourites-mobile
+slug: /remove-conference-favourites-mobile
 ---
 
 # Remove a conference from Favourites
