@@ -2,6 +2,7 @@
   "label": "Application - Extras",
   "position": 3,
   "link": {
-    "type": "generated-index"
+    "type": "generated-index",
+    "description": "Learn how to use the additional features of HooT Conferencing system."
   }
 }

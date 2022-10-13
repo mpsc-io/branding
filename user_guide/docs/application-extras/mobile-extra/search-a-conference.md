@@ -1,7 +1,7 @@
 ---
 sidebar_position: 3
-id: search-for-a-conference
-slug: /search-for-a-conference
+id: search-for-a-conference-mobile
+slug: /search-for-a-conference-mobile
 ---
 
 # Search for a conference

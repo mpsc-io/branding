@@ -72,7 +72,25 @@ const config = {
           }
         }
       },
-    ]
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'privacy',
+        path: 'privacy',
+        routeBasePath: 'privacy',
+        sidebarPath: require.resolve('./sidebars.js'),
+      }, 
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'terms-and-conditions',
+        path: 'terms-and-conditions',
+        routeBasePath: 'terms-and-conditions',
+        sidebarPath: require.resolve('./sidebars.js'),
+      }, 
+    ],
   ],
 
   themeConfig:
@@ -101,7 +119,7 @@ const config = {
             type: 'doc',
             docId: 'intro',
             position: 'left',
-            label: 'Mobile App',
+            label: 'Tutorial',
           },
           // {to: '/api', label: 'API', position: 'left'},
           {
@@ -148,6 +166,28 @@ const config = {
           //     },
           //   ],
           // },
+          {
+            title: 'Legal',
+            items: [
+              {
+                id:'privacy-policy',
+                label: 'Privacy',
+                to: '/privacy/privacy-policy',
+                // docId: '/privacy/privacy-policy',
+              },
+              {
+                id:'terms-and-conditions',
+                label: 'Terms and Conditions',
+                to: '/terms-and-conditions/terms-and-conditions',
+                // docId: '/privacy/privacy-policy',
+              },
+              // {
+              //   position: 'right',
+              //   label: 'GitHub',
+              //   href: 'https://github.com/facebook/docusaurus',
+              // },
+            ],
+          },
           // {
           //   title: 'More',
           //   items: [

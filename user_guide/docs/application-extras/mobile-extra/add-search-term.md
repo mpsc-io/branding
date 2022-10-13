@@ -1,7 +1,7 @@
 ---
 sidebar_position: 4
-id: add-search-term
-slug: /add-search-term
+id: add-search-term-mobile
+slug: /add-search-term-mobile
 ---
 
 # Add search term to Search History
