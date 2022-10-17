@@ -5,7 +5,7 @@ id: privacy-policy
 
 # Privacy Policy
 
-Multi Platform Stable Communications Inc. built the HooT Conferencing app as a Free app, and may have a commercial aspect to it. This SERVICE is provided by Multi Platform Stable Communications Inc. at no cost and is intended for use as is.
+Multi Platform Stable Communications Inc. built the HooT Conferencing app as a Free app, but may have a commercial aspect to it. This SERVICE is provided by Multi Platform Stable Communications Inc. at no cost and is intended for use as is.
 
 This page is used to inform visitors regarding our policies with the collection, use, and disclosure of Personal Information if anyone decided to use our Service.
 
@@ -15,7 +15,7 @@ The terms used in this Privacy Policy have the same meanings as in our Terms and
 
 **Information Collection and Use**
 
-For a better experience, while using our Service, we may require you to provide us with certain personally identifiable information. The information that we request will be retained by us and used as described in this privacy policy.
+For a better experience, while using our Service, we may require you to provide us with certain personally identifiable information, including but not limited to Email Address,Name,User ID,Search History,Product Interaction. The information that we request will be retained by us and used as described in this privacy policy.
 
 The app does use third-party services that may collect information used to identify you.
 
