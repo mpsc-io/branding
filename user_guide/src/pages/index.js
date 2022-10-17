@@ -18,7 +18,7 @@ function HomepageHeader() {
           <Link
             className="button button--secondary button--lg"
             to="/docs/">
-            HooT App Tutorial - 5min ⏱️
+            HooT Conferencing Tutorial
           </Link>
         </div>
       </div>
