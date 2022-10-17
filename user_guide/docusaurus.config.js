@@ -135,7 +135,8 @@ const config = {
           {
             position: 'right',
             label: 'Support',
-            href: 'mailto:hoot-support@mpsc.io?subject=%5BORG-Name%5D%20HooT%20Support%20Issue%20from%20ORG-Name'
+            to: '/support-page',
+            // href: 'mailto:hoot-support@mpsc.io?subject=%5BORG-Name%5D%20HooT%20Support%20Issue%20from%20ORG-Name'
           },
         ],
       },

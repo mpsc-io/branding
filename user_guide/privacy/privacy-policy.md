@@ -5,7 +5,7 @@ id: privacy-policy
 
 # Privacy Policy
 
-Multi Platform Stable Communications Inc. built the HooT Conferencing app as free and may have a commercial aspect to it. This SERVICE is provided by Multi Platform Stable Communications Inc. and is intended for use as is.
+Multi Platform Stable Communications Inc. built the HooT Conferencing app as a Free app, and may have a commercial aspect to it. This SERVICE is provided by Multi Platform Stable Communications Inc. at no cost and is intended for use as is.
 
 This page is used to inform visitors regarding our policies with the collection, use, and disclosure of Personal Information if anyone decided to use our Service.
 
@@ -15,7 +15,7 @@ The terms used in this Privacy Policy have the same meanings as in our Terms and
 
 **Information Collection and Use**
 
-For a better experience, while using our Service, we may require you to provide us with certain personally identifiable information, including but not limited to Email Address,. The information that we request will be retained by us and used as described in this privacy policy.
+For a better experience, while using our Service, we may require you to provide us with certain personally identifiable information. The information that we request will be retained by us and used as described in this privacy policy.
 
 The app does use third-party services that may collect information used to identify you.
 
@@ -23,6 +23,7 @@ Link to the privacy policy of third-party service providers used by the app
 
 *   [Google Play Services](https://www.google.com/policies/privacy/)
 *   [Facebook](https://www.facebook.com/about/privacy/update/printable)
+*   [Auth0](https://auth0.com/privacy)
 
 **Log Data**
 
@@ -61,9 +62,8 @@ These Services do not address anyone under the age of 13. We do not knowingly co
 
 We may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. We will notify you of any changes by posting the new Privacy Policy on this page.
 
-This policy is effective as of 2022-10-12
+This policy is effective as of 2022-10-17
 
 **Contact Us**
 
 If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us at dev@mpsc.io.
-
