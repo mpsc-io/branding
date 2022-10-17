@@ -10,5 +10,5 @@ description: Support Page
 
 If you are facing any trouble/unexpected errors while using the APIs,mobile app or the web app you can reach out to us in the following ways:
 
-1. Email us at **dev@mpsc.io**.
+1. Email us at **hoot-support@mpsc.io**.
 2. Call us at **+44 7980 770894**.
