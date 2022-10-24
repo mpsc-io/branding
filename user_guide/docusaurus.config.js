@@ -153,14 +153,21 @@ const config = {
           },
           // {to: '/api', label: 'API', position: 'left'},
           {
-            position: 'right',
-            label: 'Development',
-            href: 'https://dev.hoot.mx/',
-          },
-          {
-            position: 'right',
-            label: 'Mitsubishi-MELCO',
-            href: 'https://melco.hoot.mx/',
+            label: 'Deployments', position: 'right',
+            items: [
+              {
+                label: 'Generic-Development',
+                href: 'https://dev.hoot.mx/',
+              },
+              {
+                label: 'Mitsubishi-MELCO',
+                href: 'https://melco.hoot.mx/',
+              },
+              {
+                label: 'Speakerbus-Internal',
+                href: 'https://speakerbus-internal.hoot.mx/',
+              },
+            ]
           },
           {
             position: 'right',
