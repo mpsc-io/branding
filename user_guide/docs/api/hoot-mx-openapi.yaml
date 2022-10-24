@@ -5,11 +5,13 @@ info:
   contact:
     name: HooT @ MPSC
     email: dev@mpsc.io
+    url: 'https://www.hoot.mx/support-page'
+  termsOfService: 'https://www.hoot.mx/terms-and-conditions/terms-and-conditions'
 servers:
   - url: 'https://devapi.hoot.mx'
-    description: Dev Server
+    description: Generic
   - url: 'https://melco-api.hoot.mx'
-    description: Melco Server
+    description: Melco
 paths:
   /v1/login:
     post:
@@ -49,7 +51,17 @@ paths:
             type: string
           in: header
           name: Authorization
-          description: Auth JWT token from Auth0
+          description: Auth JWT token from IDP
+        - schema:
+            type: string
+            default: Generic
+            enum:
+              - Generic
+              - Melco
+              - Speakerbus
+          in: header
+          name: x-hoot-instance
+          description: Instance name of the requesting entity
       requestBody:
         content:
           application/json:
@@ -90,7 +102,13 @@ paths:
             type: string
           in: header
           name: Authorization
-          description: Auth JWT token from Auth0
+          description: Auth JWT token from IDP
+        - schema:
+            type: string
+            default: Generic
+          in: header
+          name: x-hoot-instance
+          description: Instance name of the requesting entity
           required: true
   '/v1/user/{user_uuid}/last_joined_conferences':
     parameters:
@@ -131,7 +149,13 @@ paths:
             type: string
           in: header
           name: Authorization
-          description: Auth JWT token from Auth0
+          description: Auth JWT token from IDP
+        - schema:
+            type: string
+            default: Generic
+          in: header
+          name: x-hoot-instance
+          description: Instance name of the requesting entity
           required: true
       description: 'get last_joined conferences for a user from index - to index. If from > max(joined), then return 204. If to > max(joined) then from to max(joined)'
   '/v1/user/{user_uuid}/invited_to_conferences':
@@ -174,7 +198,13 @@ paths:
             type: string
           in: header
           name: Authorization
-          description: Auth JWT token from Auth0
+          description: Auth JWT token from IDP
+        - schema:
+            type: string
+            default: Generic
+          in: header
+          name: x-hoot-instance
+          description: Instance name of the requesting entity
           required: true
       description: 'get invited_to_conferences conferences for a user from index - to index. If from > max(invited_to_conferences), then return 204. If to > max(invited_to_conferences) then from to max(invited_to_conferences)'
   '/v1/user/{user_uuid}/favourite_conferences':
@@ -194,7 +224,13 @@ paths:
             type: string
           in: header
           name: Authorization
-          description: Auth JWT token from Auth0
+          description: Auth JWT token from IDP
+        - schema:
+            type: string
+            default: Generic
+          in: header
+          name: x-hoot-instance
+          description: Instance name of the requesting entity
           required: true
     parameters:
       - schema:
@@ -225,7 +261,13 @@ paths:
             type: string
           in: header
           name: Authorization
-          description: Auth JWT token from Auth0
+          description: Auth JWT token from IDP
+        - schema:
+            type: string
+            default: Generic
+          in: header
+          name: x-hoot-instance
+          description: Instance name of the requesting entity
           required: true
   '/v1/user/{user_uuid}/unset_favourite_conference/{conf_id}':
     parameters:
@@ -250,7 +292,13 @@ paths:
             type: string
           in: header
           name: Authorization
-          description: Auth JWT token from Auth0
+          description: Auth JWT token from IDP
+        - schema:
+            type: string
+            default: Generic
+          in: header
+          name: x-hoot-instance
+          description: Instance name of the requesting entity
           required: true
   '/v1/search/conferences/{search_string}':
     parameters:
@@ -284,10 +332,16 @@ paths:
             type: string
           in: header
           name: Authorization
-          description: Auth JWT token from Auth0
+          description: Auth JWT token from IDP
+        - schema:
+            type: string
+            default: Generic
+          in: header
+          name: x-hoot-instance
+          description: Instance name of the requesting entity
           required: true
   /v1/say_hello:
-    get:
+    post:
       summary: Say Hello
       tags: []
       responses:
@@ -309,7 +363,13 @@ paths:
             type: string
           in: header
           name: Authorization
-          description: Auth JWT token from Auth0
+          description: Auth JWT token from IDP
+        - schema:
+            type: string
+            default: Generic
+          in: header
+          name: x-hoot-instance
+          description: Instance name of the requesting entity
   '/v1/create_conference/{conference_name}':
     parameters:
       - schema:
@@ -347,7 +407,13 @@ paths:
             type: string
           in: header
           name: Authorization
-          description: Auth JWT token from Auth0
+          description: Auth JWT token from IDP
+        - schema:
+            type: string
+            default: Generic
+          in: header
+          name: x-hoot-instance
+          description: Instance name of the requesting entity
   /v1/status:
     get:
       summary: Your GET endpoint
@@ -385,7 +451,13 @@ paths:
             type: string
           in: header
           name: Authorization
-          description: JWT of the auth
+          description: Auth JWT token from IDP
+        - schema:
+            type: string
+            default: Generic
+          in: header
+          name: x-hoot-instance
+          description: Instance name of the requesting entity
   '/v1/conf/{conf_id}':
     parameters:
       - schema:
@@ -412,7 +484,13 @@ paths:
             type: string
           in: header
           name: Authorization
-          description: JWT from the IDP
+          description: Auth JWT token from IDP
+        - schema:
+            type: string
+            default: Generic
+          in: header
+          name: x-hoot-instance
+          description: Instance name of the requesting entity
   '/v1/user/{user_id}/search_strings/{search_string}':
     parameters:
       - schema:
@@ -436,7 +514,13 @@ paths:
             type: string
           in: header
           name: Authorization
-          description: JWT from the IDP
+          description: Auth JWT token from IDP
+        - schema:
+            type: string
+            default: Generic
+          in: header
+          name: x-hoot-instance
+          description: Instance name of the requesting entity
   '/v1/user/{user_id}/search_strings':
     parameters:
       - schema:
@@ -465,7 +549,13 @@ paths:
             type: string
           in: header
           name: Authorization
-          description: IDP issued JWS
+          description: Auth JWT token from IDP
+        - schema:
+            type: string
+            default: Generic
+          in: header
+          name: x-hoot-instance
+          description: Instance name of the requesting entity
   /v1/check_entry_code:
     post:
       summary: ''
@@ -552,7 +642,13 @@ paths:
             type: string
           in: header
           name: Authorization
-          description: IDP issued JWS
+          description: Auth JWT token from IDP
+        - schema:
+            type: string
+            default: Generic
+          in: header
+          name: x-hoot-instance
+          description: Instance name of the requesting entity
       description: 'Edit the conference `conf_id` users, provide `new_moderators`, `new_participants` and users to be removed as `remove_users`'
   '/v1/conf/{conf_id}/all_users':
     parameters:
@@ -600,7 +696,46 @@ paths:
             type: string
           in: header
           name: Authorization
-          description: JWT from IDP
+          description: Auth JWT token from IDP
+        - schema:
+            type: string
+            default: Generic
+          in: header
+          name: x-hoot-instance
+          description: Instance name of the requesting entity
+  /v1/x:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      operationId: get-v1-x
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authorization
+          description: Auth JWT token from IDP
+        - schema:
+            type: string
+            default: Generic
+          in: header
+          name: x-hoot-instance
+          description: Instance name of the requesting entity
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: u
+          description: URL of the conference
+          required: true
+      description: Get URL conference as query param.
+      responses:
+        '302':
+          description: Redirection to the conference UI.
+          headers:
+            Location:
+              schema:
+                type: string
+              description: Location of the Conference
 components:
   schemas:
     user:
@@ -668,7 +803,7 @@ components:
           type: string
         meta:
           type: object
-      x-examples:
+      examples:
         - code: 503
           reason: the conference already exists
           meta:
@@ -720,6 +855,10 @@ components:
           type: boolean
         is_active:
           type: boolean
+        hoot_instance:
+          type: string
+          description: X-Hoot-Instance of the CoreMX
+          default: Generic
     coremx:
       title: coremx
       type: object
@@ -748,6 +887,14 @@ components:
           type: string
         sip:
           $ref: '#/components/schemas/sip'
+        tags:
+          type: array
+          items:
+            type: string
+            enum:
+              - Generic
+              - Melco
+              - Speakerbus
       required:
         - name
         - parent_cloud
@@ -825,3 +972,9 @@ components:
           $ref: '#/components/schemas/participant'
         conference:
           $ref: '#/components/schemas/conference'
+  securitySchemes:
+    Authorization:
+      type: http
+      scheme: basic
+security:
+  - Authorization: []
