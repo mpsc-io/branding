@@ -127,6 +127,16 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      metadata: [
+        {
+          name: 'description',
+          content: 'Infinitely Scalable Conferencing API & System by MPSC.io'
+        },
+        {
+          name: 'keywords',
+          content: 'cloud-native conferencing, conference-api, hoot-conferencing'
+        }
+      ],
       navbar: {
        // title: 'HooT',
         logo: {
