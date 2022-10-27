@@ -1,8 +1,3 @@
----
-slug: /terms-and-conditions
-id: terms-and-conditions
----
-
 # Terms & Conditions
 
 By downloading or using the app, these terms will automatically apply to you – you should make sure therefore that you read them carefully before using the app. You’re not allowed to copy or modify the app, any part of the app, or our trademarks in any way. You’re not allowed to attempt to extract the source code of the app, and you also shouldn’t try to translate the app into other languages or make derivative versions. The app itself, and all the trademarks, copyright, database rights, and other intellectual property rights related to it, still belong to Multi Platform Stable Communications Inc..
@@ -17,7 +12,7 @@ Link to Terms and Conditions of third-party service providers used by the app
 
 *   [Google Play Services](https://policies.google.com/terms)
 *   [Facebook](https://www.facebook.com/legal/terms/plain_text_terms)
-*   [Auth0](https://auth0.com/privacy)
+*   [Auth0](https://auth0.com/web-terms)
 
 You should be aware that there are certain things that Multi Platform Stable Communications Inc. will not take responsibility for. Certain functions of the app will require the app to have an active internet connection. The connection can be Wi-Fi or provided by your mobile network provider, but Multi Platform Stable Communications Inc. cannot take responsibility for the app not working at full functionality if you don’t have access to Wi-Fi, and you don’t have any of your data allowance left.
 
@@ -33,8 +28,9 @@ At some point, we may wish to update the app. The app is currently available on 
 
 We may update our Terms and Conditions from time to time. Thus, you are advised to review this page periodically for any changes. We will notify you of any changes by posting the new Terms and Conditions on this page.
 
-These terms and conditions are effective as of 2022-10-17
+These terms and conditions are effective as of 2022-10-27
 
 **Contact Us**
 
 If you have any questions or suggestions about our Terms and Conditions, do not hesitate to contact us at dev@mpsc.io.
+
