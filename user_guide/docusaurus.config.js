@@ -175,11 +175,11 @@ const config = {
                 href: 'https://dev.hoot.mx/',
               },
               {
-                label: 'Mitsubishi-MELCO',
+                label: 'Corp Deployment 1',
                 href: 'https://melco.hoot.mx/',
               },
               {
-                label: 'Speakerbus-Internal',
+                label: 'Corp Deployment 2',
                 href: 'https://speakerbus-internal.hoot.mx/',
               },
             ]
