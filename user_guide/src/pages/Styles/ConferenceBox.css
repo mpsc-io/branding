@@ -1,0 +1,40 @@
+
+.conference-box
+{
+    min-width: 80%;
+    border: 1px solid #f2f5f7;
+    background: #f2f5f7;
+    /* margin-left: 4rem;
+    margin-right: 4rem; */
+    border-radius: 16px;
+    margin: 4rem;
+}
+
+.conference-button-container
+{
+    align-items: center;
+}
+
+.conference-heading
+{
+    text-align: center;
+}
+
+p.conference-text
+{
+    text-align: center;
+}
+
+ul{
+    list-style-type: none;
+    display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+li{
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+}
+
+

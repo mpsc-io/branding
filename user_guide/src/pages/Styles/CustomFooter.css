@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Noto+Sans:wght@400;500;700&display=swap');
+
+.footer-container
+{
+    margin-left: 4rem;
+    margin-right: 4rem;
+    margin-top: 2rem;
+    /* margin-bottom: 2rem; */
+    display: flex;
+    justify-content: space-between;
+    /* background: red; */
+}
+
+.footer-image
+{
+    width: 10%;
+    height: 10%;
+}
+
+a.policy-links
+{
+    color: #465546;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 1em;
+    font-weight: 500;
+    margin-right: 1rem;
+}
+
+ul.policy-list{
+    text-align: left;
+    align-content: left;
+    justify-content: space-between;
+}
+
+@media only screen and (min-width: 500px){
+    .line-break{
+        display: none;
+    }
+}
+
+p.footer-content
+{
+    margin-top: 1.5rem;
+}
+
+h6{
+    font-weight: 500;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 1em;
+    color: #124E48;
+}

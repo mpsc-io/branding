@@ -89,7 +89,6 @@ const config = {
     ],
     redocusaurus,
   ],
-
   plugins: [
     [
       'docusaurus-plugin-openapi-docs',
@@ -138,6 +137,7 @@ const config = {
         }
       ],
       navbar: {
+        // style: 'dark',
        // title: 'HooT',
         logo: {
           alt: 'HooT',
@@ -159,11 +159,11 @@ const config = {
             type: 'doc',
             docId: 'intro',
             position: 'left',
-            label: 'Tutorial',
+            label: 'How to Use',
           },
           // {to: '/api', label: 'API', position: 'left'},
           {
-            label: 'Deployments', position: 'right',
+            label: 'Deployments', position: 'left',
             items: [
               {
                 label: 'Generic-Development',
@@ -185,78 +185,22 @@ const config = {
             to: '/support-page',
             // href: 'mailto:hoot-support@mpsc.io?subject=%5BORG-Name%5D%20HooT%20Support%20Issue%20from%20ORG-Name'
           },
-        ],
-      },
-      footer: {
-        style: 'dark',
-        links: [
-          // {
-          //   //position: 'right',
-          //   title: 'Docs',
-          //   items: [
-          //     {
-          //       position: 'right',
-          //       label: 'Tutorial',
-          //       to: '/docs/intro',
-          //     },
-          //   ],
-          // },
-          // {
-          //   title: 'Deployments',
-          //   items: [
-          //     {
-          //       label: 'Development',
-          //       href: 'https://dev.hoot.mx/',
-          //     },
-          //     {
-          //       label: 'Mitsubishi-MELCO',
-          //       href: 'https://melco.hoot.mx/',
-          //     },
-          //   ],
-          // },
           {
-            title: 'Legal',
-            items: [
-              {
-                id:'privacy-policy',
-                label: 'Privacy',
-                to: '/privacy/privacy-policy',
-                // docId: '/privacy/privacy-policy',
-              },
-              {
-                id:'terms-and-conditions',
-                label: 'Terms and Conditions',
-                to: '/terms-and-conditions/terms-and-conditions',
-                // docId: '/privacy/privacy-policy',
-              },
-              // {
-              //   position: 'right',
-              //   label: 'GitHub',
-              //   href: 'https://github.com/facebook/docusaurus',
-              // },
-            ],
+            to: 'docs/intro',
+            label: 'Get Started',
+            position: 'right',
+            className: 'custom-button',
           },
-          // {
-          //   title: 'More',
-          //   items: [
-          //     {
-          //      position: 'right',
-          //       label: 'Blog',
-          //       to: '/blog',
-          //     },
-          //     {
-          //       position: 'right',
-          //       label: 'GitHub',
-          //       href: 'https://github.com/facebook/docusaurus',
-          //     },
-          //   ],
-          // },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} MPSC, Inc.`,
       },
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
+      },
+      colorMode: {
+        // defaultMode: 'dark',
+        disableSwitch: true,
+        // respectPrefersColorScheme: false,
       },
     }),
   themes: ["docusaurus-theme-openapi-docs"],
