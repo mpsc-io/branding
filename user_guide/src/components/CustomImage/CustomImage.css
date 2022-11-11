@@ -1,0 +1,32 @@
+.hero-img-mobile
+{
+    display: none;
+
+}
+
+/* .hero-img-web
+{
+    height: 80vh;
+} */
+
+@media screen and (max-width: 768px)
+{
+    .hero-img-mobile{
+        display: list-item;
+        width: 100%;
+        /* height: auto; */
+    }   
+    .hero-img-web{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 460px){
+    .hero-img-mobile{
+        display: list-item;
+        top: 48vh;
+        width: 100%;
+        /* height: auto; */
+    }  
+    
+}

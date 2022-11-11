@@ -74,13 +74,6 @@ const config = {
           docLayoutComponent: "@theme/DocPage",
           docItemComponent: "@theme/ApiItem"
         },
-        // blog: {
-        //   showReadingTime: true,
-        //   // Please change this to your repo.
-        //   // Remove this to remove the "edit this page" links.
-        //   editUrl:
-        //     'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-        // },
         blog: false,
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -141,29 +134,41 @@ const config = {
        // title: 'HooT',
         logo: {
           alt: 'HooT',
-          src: 'img/hoot_icon.png',
+          src: 'img/hoot_logo.svg',
+          className: 'navbar-logo',
         },
         items: [
+          {
+            label: 'Home',
+            className: 'nav-links',
+            position: 'left',
+            to: '/'
+          },
           {
             type: 'doc',
             docId: 'design',
             position: 'left',
             label: 'Design',
+            className: 'nav-links'
           },
           {
             to: '/api',
             position: 'left',
             label: 'API',
+            className: 'nav-links'
           },
           {
             type: 'doc',
             docId: 'intro',
             position: 'left',
-            label: 'Tutorial',
+            label: 'How to use',
+            className: 'nav-links'
           },
+
           // {to: '/api', label: 'API', position: 'left'},
           {
-            label: 'Deployments', position: 'right',
+            label: 'Deployments', position: 'left',
+            className: 'nav-links',
             items: [
               {
                 label: 'Generic-Development',
@@ -181,82 +186,33 @@ const config = {
           },
           {
             position: 'right',
+            className: 'nav-links',
             label: 'Support',
             to: '/support-page',
             // href: 'mailto:hoot-support@mpsc.io?subject=%5BORG-Name%5D%20HooT%20Support%20Issue%20from%20ORG-Name'
           },
-        ],
-      },
-      footer: {
-        style: 'dark',
-        links: [
-          // {
-          //   //position: 'right',
-          //   title: 'Docs',
-          //   items: [
-          //     {
-          //       position: 'right',
-          //       label: 'Tutorial',
-          //       to: '/docs/intro',
-          //     },
-          //   ],
-          // },
-          // {
-          //   title: 'Deployments',
-          //   items: [
-          //     {
-          //       label: 'Development',
-          //       href: 'https://dev.hoot.mx/',
-          //     },
-          //     {
-          //       label: 'Mitsubishi-MELCO',
-          //       href: 'https://melco.hoot.mx/',
-          //     },
-          //   ],
-          // },
           {
-            title: 'Legal',
-            items: [
-              {
-                id:'privacy-policy',
-                label: 'Privacy',
-                to: '/privacy/privacy-policy',
-                // docId: '/privacy/privacy-policy',
-              },
-              {
-                id:'terms-and-conditions',
-                label: 'Terms and Conditions',
-                to: '/terms-and-conditions/terms-and-conditions',
-                // docId: '/privacy/privacy-policy',
-              },
-              // {
-              //   position: 'right',
-              //   label: 'GitHub',
-              //   href: 'https://github.com/facebook/docusaurus',
-              // },
-            ],
+            // to: 'docs/intro',
+            to: "mailto:info@mpsc.io?subject=%5BHooT%5D%20Access%20Code%20Request&body=I%20am%20interested%20in%20exploring%20the%20HooT%20Conferencing%20App.%20%0A%0A",
+            label: 'Get Access Code',
+            position: 'right',
+            className: 'custom-button',
           },
-          // {
-          //   title: 'More',
-          //   items: [
-          //     {
-          //      position: 'right',
-          //       label: 'Blog',
-          //       to: '/blog',
-          //     },
-          //     {
-          //       position: 'right',
-          //       label: 'GitHub',
-          //       href: 'https://github.com/facebook/docusaurus',
-          //     },
-          //   ],
-          // },
+          {
+            // to: 'docs/intro',
+            to: "mailto:info@mpsc.io?subject=%5BHooT%5D%20Access%20Code%20Request&body=I%20am%20interested%20in%20exploring%20the%20HooT%20Conferencing%20App.%20%0A%0A",
+            label: 'Get Access Code',
+            position: 'right',
+            className: 'nav-links mobile',
+          },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} MPSC, Inc.`,
       },
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
+      },
+      colorMode: {
+        disableSwitch: true,
       },
     }),
   themes: ["docusaurus-theme-openapi-docs"],

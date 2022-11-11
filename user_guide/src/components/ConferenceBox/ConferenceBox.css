@@ -1,0 +1,92 @@
+.conference-box
+{
+    min-width: 80%;
+    border: 1px solid #f2f5f7;
+    background: #f2f5f7;
+    border-radius: 16px;
+    margin-left: 4rem;
+    margin-right: 4rem;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}
+
+.conference-button-container
+{
+    align-items: center;
+}
+
+.conference-heading
+{
+    text-align: center;
+    margin-left: 0rem;
+}
+
+p.conference-text
+{
+    text-align: center;
+}
+
+.btn-rows{
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.btn-links{
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+}
+
+@media screen and (max-width: 768px)
+{
+    .btn-rows{
+        display: block;
+        justify-content: left;
+        text-align: left;
+        padding-left: 0px;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+    .conference-box
+    {
+        margin-left: 4rem;
+        margin-right: 4.5rem;
+        max-width: 100%;
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    .conference-button-container
+    {
+    align-items: left;
+    }
+    p.conference-text
+    {
+    text-align: center;
+    
+    }
+    .conference-heading
+    {
+        font-size: 1.2em;
+        /* text-align: center; */
+    }
+    .btn-links{
+        width: 100%;
+        margin-bottom: 1rem;
+        /* margin-right: 1rem;
+        margin-left: 1rem; */
+    }
+}
+
+@media screen and (max-width: 460px){
+    .conference-box
+    {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+    
+}

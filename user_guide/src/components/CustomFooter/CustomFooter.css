@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Noto+Sans:wght@400;500;700&display=swap');
+
+.footer-container
+{
+    margin-left: 4rem;
+    margin-right: 4rem;
+    display: flex;
+    justify-content: space-between;
+    /* background: red; */
+}
+
+.footer-image
+{
+    width: 10%;
+    height: 10%;
+}
+
+a.policy-links
+{
+    color: #465546;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 1em;
+    font-weight: 500;
+    margin-right: 1rem;
+}
+
+.policy-list{
+    text-align: left;
+    align-content: left;
+    justify-content: space-between;
+}
+
+
+@media only screen and (min-width: 500px){
+    .line-break{
+        display: none;
+    }
+}
+
+p.footer-content
+{
+    margin-top: 1.5rem;
+}
+
+h6{
+    font-weight: 500;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 1em;
+    color: #124E48;
+}
+
+@media screen and (max-width: 768px) {
+    .footer-container
+    {
+        display: block;
+        margin-bottom: 2rem;
+        margin-left: 4rem;
+        margin-right: 4rem;
+    }
+    .footer-image
+    {
+    width: 20%;
+    height: 20%;
+    }
+    .img-break-line
+    {
+        display: none;
+    }
+    .policy-list
+    {
+        margin-bottom: 1rem;
+    }
+    .button-links
+    {
+        margin-bottom: 2rem;
+    }
+
+    p.footer-content
+{
+    margin-top: 0rem;
+}
+
+.footer-column-left
+{
+    margin-top: 2rem;
+}
+}
+
+@media screen and (max-width: 460px)
+{
+    .footer-container
+    {
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+}

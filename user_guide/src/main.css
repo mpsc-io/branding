@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Noto+Sans:wght@400;500;700&display=swap');
+
+
+p.copyright-text
+{
+  margin-left: 4rem;
+  margin-bottom: 2rem;
+}
+
+.hero-section
+{
+  display: flex;
+  margin-right: 4rem;
+  margin-top: 2rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 4rem;
+  margin-bottom: 2rem;
+}
+
+h1{
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 2.5em;
+  text-align: left;
+}
+
+p{
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 1em;
+  color: #465566;
+}
+
+.container
+{
+  margin: 3rem;
+}
+
+.feature-text
+{
+  color: #124E48;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 1em;
+  font-weight: 500;
+  margin-left: 3rem;
+  margin-top: 2rem;
+}
+
+h2{
+  font-family: 'Noto Sans', sans-serif;
+  margin-left: 3rem;
+  margin-top: 1rem;
+  font-size: 1.5em;
+}
+
+.feature-box
+{
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  background-color: #f2f5f7;
+  max-width: 30%;
+  min-height: 30%;
+  border: solid 1px #f8fbfb;
+  border-radius: 16px;
+  margin-right: 1rem;
+}
+
+.feature-image
+{
+  margin-left: 1rem;
+  margin-top: 1rem;
+}
+
+h3{
+  margin-left: 1rem;
+  margin-top: 2rem;
+}
+
+p.feature-line
+{
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 1em;
+  color: #465566;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.feature-container
+{
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+
+.divider
+{
+  margin-left: 4rem;
+  margin-right: 4rem;
+  color: #465566;
+}
+
+p.copyright-text
+{
+  margin-top: 2rem;
+  margin-left: 4rem;
+  margin-bottom: 4rem;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 1em;
+  color: #465566;
+}
+
+.features
+{
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 4rem;
+}
+
+.feature-row
+{
+  display: flex;
+  justify-content: space-between;
+}
+
+.hr-line{
+  margin: 0rem 4rem;
+}
+
+
+@media screen and (max-width: 768px)
+{
+  .hr-line
+  {
+    margin-left: 4rem;
+    margin-right: 4rem;
+  }
+  .hero-section
+  {
+    display: block;
+    margin-top: 1rem;
+    margin-right: 3rem;
+    margin-left: 3rem;
+  }
+  .feature-row
+{
+  display: block;
+}
+.feature-box
+{
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  background-color: #f2f5f7;
+  max-width: 100%;
+  min-height: 30%;
+  border: solid 1px #f8fbfb;
+  border-radius: 16px;
+  margin-top: 2rem;
+  /* margin-bottom: 2rem; */
+}
+
+.features{
+  margin-top: 4rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  margin-bottom: 4rem;
+}
+
+.feature-container
+{
+  margin-left: 1rem;
+  margin-right: 0.5rem;
+}
+.feature-text
+{
+  margin-left: 1rem;
+}
+
+h2{
+  margin-left: 1rem;
+}
+
+.hero-content
+{
+  margin-top: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+h1{
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 2em;
+  margin-right: 2rem;
+}
+.hero-paragraph{
+  margin-bottom: 2rem;
+  margin-right: 2rem;
+}
+}
+
+@media screen and (max-width: 460px)
+{
+  .hero-section
+  {
+    margin-right: 2rem;
+    margin-left: 1rem;
+
+  }
+  .hero-content
+  {
+    height: 48vh;
+  }
+
+  .features{
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  .hr-line
+  {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  p.copyright-text
+  {
+  margin-left: 1rem;
+  }
+}

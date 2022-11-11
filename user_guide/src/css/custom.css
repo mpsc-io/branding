@@ -5,6 +5,8 @@
  */
 
 /* You can override the default Infima variables here. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;700&family=Noto+Sans:wght@400;500;700&display=swap');
+
 :root {
   --ifm-color-primary: #2e8555;
   --ifm-color-primary-dark: #29784c;
@@ -27,4 +29,76 @@
   --ifm-color-primary-lighter: #32d8b4;
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+.custom-button{
+  background: white;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 12px;
+  padding-right: 12px;
+  text-align: center;
+  display: inline-block;
+  font-size: 0.9em;
+  margin-right: 2.5rem;
+  margin-left: 1rem;
+  border-radius: 8px;
+  color: #124E48;
+  border: 1px solid #124E48;
+  font-family: 'Inter', sans-serif;
+}
+
+
+.nav-links
+{
+  /* padding-top: 1rem;
+  padding-bottom: 1rem; */
+    /* vertical-align: middle; */
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    font-size: 1em;
+    color: #6C737F;
+}
+
+.nav-links:active
+{
+  color: #124E48;
+}
+
+.navbar-logo
+{
+    /* padding-top: 0rem; */
+    /* width: 35px; */
+    max-height: 25px;
+    margin-left: 2.5rem;
+}
+
+@media screen and (min-width: 821px) {
+  .mobile
+  {
+    display: None;
+  }
+}
+
+@media screen and (min-width: 1680px) {
+  .navbar-logo
+{
+    /* padding-top: 0rem; */
+    /* width: 35px; */
+    max-height: 25px;
+    margin-left: 6.5rem;
+}
+.custom-button{
+  margin-right: 8rem;
+}
+}
+
+@media screen and (max-width: 820px){
+  .custom-button{
+    display: None;
+  }
+  .navbar-logo{
+    margin-left: 0rem;
+  }
+
 }
