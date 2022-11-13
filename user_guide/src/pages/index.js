@@ -35,7 +35,7 @@ export default function Home() {
   return (
     <Layout
       title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      description="Infinitely Scalable Conferencing API & System by MPSC.io">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
