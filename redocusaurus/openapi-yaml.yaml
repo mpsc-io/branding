@@ -15,7 +15,7 @@ servers:
 paths:
   /v1/login:
     post:
-      summary: Web Login
+      summary: WebLogin
       operationId: post-login
       responses:
         '200':
@@ -25,30 +25,47 @@ paths:
               schema:
                 description: ''
                 type: object
+                x-examples:
+                  example-1:
+                    user_id: user@email.com
+                    user_uuid: 123e4567-e89b-12d3-a456-426614174000
                 properties:
                   user_id:
                     type: string
                     minLength: 1
+                    pattern: >-
+                      ^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+
+                    example: dev@mpsc.io
                   user_uuid:
                     type: string
                     minLength: 1
+                    pattern: ^(?!\s*$).+
+                    example: 728de4da-e94f-4367-80e7-c672814a55e6
                 required:
                   - user_id
                   - user_uuid
-                x-examples:
-                  example-1:
-                    user_id: bhavika.bharti@mpsc.io
-                    user_uuid: 123e4567-e89b-12d3-a456-426614174000
         '500':
           description: Internal Server Error
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
-      description: Record or register login event of a user
+      description: >-
+        HooT's Login API allows you to record or register login event of a
+        user. 
+
+        `Authorization-Token` and `x-hoot-instance` that signifies the instance
+        name are passed as headers.
+
+        The API returns a JSON object with two parameters: user id as `user_id`
+        and `user_uuid` as unique user id. This unique user id is used to
+        identify the user across the conferencing system
       parameters:
         - schema:
             type: string
+            pattern: (^[\w-]*\.[\w-]*\.[\w-]*$)
+            example: >-
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
           in: header
           name: Authorization
           description: Auth JWT token from IDP
@@ -60,6 +77,7 @@ paths:
               - Generic
               - Melco
               - Speakerbus
+            example: Generic
           in: header
           name: x-hoot-instance
           description: Instance name of the requesting entity
@@ -72,27 +90,35 @@ paths:
             examples:
               Example-BB:
                 value:
-                  given_name: Bhavika
-                  family_name: Bharti
-                  nickname: bhavika.bharti
-                  name: Bhavika Bharti
-                  picture: >-
-                    https://lh3.googleusercontent.com/a/AATXAJzsp85pVv6PdJNRYadaiSFm7ZZNYk7ZGrZwIA6k=s96-c
+                  given_name: Jane
+                  family_name: Doe
+                  nickname: Jane.Doe
+                  name: Jane Doe
+                  picture: https://lh3.googleusercontent.com/a/AATxxxxx=s96-c
                   locale: en-GB
                   updated_at: '2022-03-12T10:31:28.797Z'
-                  email: bhavika.bharti@mpsc.io
+                  email: jane.doe@example.com
                   email_verified: true
                   sub: google-oauth2|108203387585675245469
+        description: >-
+          In the request body, the user profile is passed. This user profile is
+          generated when we have logged in/signed up through the third-party
+          authentication system Auth0. The user profile is a JSON object, which
+          looks like the object shown in Example-BB.
     parameters: []
   /v1/check_conf/{conf_id}:
     parameters:
       - schema:
           type: string
+          example: 6e19e88d-634f-4872-826b-2d26503caba1
+          minLength: 1
+          pattern: ^(?!\s*$).+
         name: conf_id
         in: path
         required: true
+        description: unique conference id used to identify a conference
     get:
-      summary: Check Conference
+      summary: CheckConferenceByID
       tags: []
       responses:
         '200':
@@ -103,6 +129,10 @@ paths:
       parameters:
         - schema:
             type: string
+            pattern: (^[\w-]*\.[\w-]*\.[\w-]*$)
+            minLength: 1
+            example: >-
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
           in: header
           name: Authorization
           description: Auth JWT token from IDP
@@ -110,20 +140,39 @@ paths:
         - schema:
             type: string
             default: Generic
+            example: Generic
+            enum:
+              - Generic
+              - Melco
+              - Speakerbus
           in: header
           name: x-hoot-instance
           description: Instance name of the requesting entity
           required: true
+      description: >-
+        Use HooT's Check Conference API to check if a conference is alive.
+
+        The API takes Conference ID coined `conf_id` as a path parameter.
+
+        `Authorization-Token` and `x-hoot-instance` that signifies the instance
+        name are passed as headers.
+
+        The API returns a 200 response code in case a conference with the given
+        Conference ID is alive, else it returns a 404 reponse code.
   /v1/user/{user_uuid}/last_joined_conferences:
     parameters:
       - schema:
           type: string
+          example: a5c818fb-bd18-41f6-a030-745ff9fe7f21
+          minLength: 1
+          maxLength: 36
+          pattern: ^(?!\s*$).+
         name: user_uuid
         in: path
         required: true
-        description: User's UUID
+        description: unique user id used to identify a user
     get:
-      summary: Last Joined Conferences
+      summary: UserLastJoinedConferences
       tags: []
       responses:
         '200':
@@ -151,6 +200,10 @@ paths:
           description: to index (-1 means all)
         - schema:
             type: string
+            pattern: (^[\w-]*\.[\w-]*\.[\w-]*$)
+            minLength: 1
+            example: >-
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
           in: header
           name: Authorization
           description: Auth JWT token from IDP
@@ -158,24 +211,46 @@ paths:
         - schema:
             type: string
             default: Generic
+            example: Generic
+            enum:
+              - Generic
+              - Melco
+              - Speakerbus
           in: header
           name: x-hoot-instance
           description: Instance name of the requesting entity
           required: true
       description: >-
-        get last_joined conferences for a user from index - to index. If from >
-        max(joined), then return 204. If to > max(joined) then from to
-        max(joined)
+        Use HooT's Last Joined Conferences API to fetch list of conferences
+        recently joined by the user within a valid range of values (to,from).
+
+        `Authorization-Token` and `x-hoot-instance` that signifies the instance
+        name are passed as headers.
+
+        Unique user id as `user_uuid` is passed as a path parameter to identify
+        the user for whom the list of last joined conferences is to be
+        retrieved.
+
+        If from is greater than maximum number of conferences joined by the
+        user, then 204 is returned as the response code with no reponse body.
+
+        If to is greater than the maximum number of conferences joined, then
+        conferences are returned within index range of (from,maximum number of
+        conferences joined).
   /v1/user/{user_uuid}/invited_to_conferences:
     parameters:
       - schema:
           type: string
+          pattern: ^(?!\s*$).+
+          minLength: 1
+          maxLength: 36
+          example: a5c818fb-bd18-41f6-a030-745ff9fe7f21
         name: user_uuid
         in: path
         required: true
-        description: User's UUID
+        description: unique user id used to identify a user
     get:
-      summary: Recently Invited to Conferences
+      summary: UserInvitedToConferences
       tags: []
       responses:
         '200':
@@ -204,23 +279,56 @@ paths:
           description: to index (-1) means all or max
         - schema:
             type: string
+            pattern: (^[\w-]*\.[\w-]*\.[\w-]*$)
+            example: >-
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
           in: header
           name: Authorization
           description: Auth JWT token from IDP
+          required: true
         - schema:
             type: string
             default: Generic
+            example: Generic
+            enum:
+              - Generic
+              - Melco
+              - Speakerbus
           in: header
           name: x-hoot-instance
           description: Instance name of the requesting entity
           required: true
       description: >-
-        get invited_to_conferences conferences for a user from index - to index.
-        If from > max(invited_to_conferences), then return 204. If to >
-        max(invited_to_conferences) then from to max(invited_to_conferences)
+        Use HooT's Invited To Conferences API to fetch list of conferences a
+        user has been invited to, within a valid range of values (to,from).
+
+        `Authorization-Token` and `x-hoot-instance` that signifies the instance
+        name are passed as headers.
+
+        Unique user id as `user_uuid` is passed as a path parameter to identify
+        the user for whom the list of invited conferences is to be retrieved.
+
+        If from is greater than maximum number of conferences the user has been
+        invited to, then 204 is returned as the response code with no reponse
+        body.
+
+        If to is greater than the maximum number of conferences the user has
+        been invited to, then conferences are returned within index range of
+        (from,maximum number of conferences user has been invited to).
   /v1/user/{user_uuid}/favourite_conferences:
     get:
-      description: ''
+      description: >-
+        HooT's Favourite Conferences API fetches the list of conferences a user
+        has marked as favourite.
+
+        The API returns the list of all the conferences user has marked as
+        favourite in the form of a JSON object.
+
+        Unique user id as `user_uuid` is passed as a path parameter to identify
+        the user for whom the favoruite conferences are to be retrieved.
+
+        `Authorization-Token` and `x-hoot-instance` that signifies the instance
+        name are passed as headers.
       responses:
         '200':
           description: OK
@@ -233,6 +341,10 @@ paths:
       parameters:
         - schema:
             type: string
+            pattern: (^[\w-]*\.[\w-]*\.[\w-]*$)
+            example: >-
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+            minLength: 1
           in: header
           name: Authorization
           description: Auth JWT token from IDP
@@ -240,31 +352,50 @@ paths:
         - schema:
             type: string
             default: Generic
+            example: Generic
+            enum:
+              - Generic
+              - Melco
+              - Speakerbus
           in: header
           name: x-hoot-instance
           description: Instance name of the requesting entity
           required: true
-      summary: Favourite Conferences
+      summary: UserFavouriteConference
     parameters:
       - schema:
           type: string
+          example: a5c818fb-bd18-41f6-a030-745ff9fe7f21
+          minLength: 1
+          maxLength: 36
+          pattern: ^(?!\s*$).+
         name: user_uuid
         in: path
         required: true
+        description: unique user id used to identify a user
   /v1/user/{user_uuid}/set_favourite_conference/{conf_id}:
     parameters:
       - schema:
           type: string
+          pattern: ^(?!\s*$).+
+          minLength: 1
+          maxLength: 36
+          example: a5c818fb-bd18-41f6-a030-745ff9fe7f21
         name: user_uuid
         in: path
         required: true
+        description: unique user id used to identify a user
       - schema:
           type: string
+          pattern: ^(?!\s*$).+
+          minLength: 1
+          example: 6e19e88d-634f-4872-826b-2d26503caba1
         name: conf_id
         in: path
         required: true
+        description: unique conference id used to identify a conference
     post:
-      summary: Set Favourite Conference
+      summary: UserSetFavouriteConference
       operationId: post-user-user_uuid-set_favourite_conference-conf_id
       responses:
         '202':
@@ -272,6 +403,10 @@ paths:
       parameters:
         - schema:
             type: string
+            example: >-
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+            pattern: (^[\w-]*\.[\w-]*\.[\w-]*$)
+            minLength: 1
           in: header
           name: Authorization
           description: Auth JWT token from IDP
@@ -279,24 +414,50 @@ paths:
         - schema:
             type: string
             default: Generic
+            example: Generic
+            enum:
+              - Generic
+              - Melco
+              - Speakerbus
           in: header
           name: x-hoot-instance
           description: Instance name of the requesting entity
           required: true
+      description: >-
+        You can leverage HooT's Set Favourite Conference API to mark a
+        conference as favourite for a particular user. 
+
+        On successful addition to the Favourites list, the API will return a 202
+        response code.
+
+        Conference Id as `conf_id` and Unique user id as `user_uuid` are passed
+        as path parameters to identify the conference and user respectively.
+
+        `Authorization-Token` and `x-hoot-instance` that signifies the instance
+        name are passed as headers.
   /v1/user/{user_uuid}/unset_favourite_conference/{conf_id}:
     parameters:
       - schema:
           type: string
+          example: a5c818fb-bd18-41f6-a030-745ff9fe7f21
+          pattern: ^(?!\s*$).+
+          minLength: 1
+          maxLength: 36
         name: user_uuid
         in: path
         required: true
+        description: unique user id used to identify a user
       - schema:
           type: string
+          example: 6e19e88d-634f-4872-826b-2d26503caba1
+          pattern: ^(?!\s*$).+
+          minLength: 1
         name: conf_id
         in: path
         required: true
+        description: unique conference id used to identify a conference
     post:
-      summary: Unset Favourite Conference
+      summary: UserUnsetFavouriteConference
       operationId: post-user-user_uuid-unset_favourite_conference-conf_id
       responses:
         '202':
@@ -304,6 +465,10 @@ paths:
       parameters:
         - schema:
             type: string
+            pattern: (^[\w-]*\.[\w-]*\.[\w-]*$)
+            minLength: 1
+            example: >-
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
           in: header
           name: Authorization
           description: Auth JWT token from IDP
@@ -311,20 +476,40 @@ paths:
         - schema:
             type: string
             default: Generic
+            example: Generic
+            enum:
+              - Generic
+              - Melco
+              - Speakerbus
           in: header
           name: x-hoot-instance
           description: Instance name of the requesting entity
           required: true
+      description: >-
+        You can leverage HooT's Unset Favourite Conference API to remove a
+        conference from favourites for a particular user. 
+
+        On successful removal from Favourites, the API will return a 202
+        response code.
+
+        Conference Id as `conf_id` and Unique user id as `user_uuid` are passed
+        as path parameters to identify the conference and user respectively.
+
+        `Authorization-Token` and `x-hoot-instance` that signifies the instance
+        name are passed as headers.
   /v1/search/conferences/{search_string}:
     parameters:
       - schema:
           type: string
           minLength: 3
+          pattern: ^[a-zA-Z0-9_]*$
+          example: searchterm1
         name: search_string
         in: path
         required: true
+        description: Search term that should be present in the conference name.
     get:
-      summary: Search Conference
+      summary: SearchConferences
       tags: []
       responses:
         '200':
@@ -335,6 +520,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/partyconf'
+              examples: {}
       operationId: get-search-conferences-search_string
       parameters:
         - schema:
@@ -356,9 +542,24 @@ paths:
           name: x-hoot-instance
           description: Instance name of the requesting entity
           required: true
+      description: >
+        Leverage HooT's Search Conference API to fetch list of conferences that
+        include the search string coined `search_string`, passed a path
+        parameter.
+
+        `Authorization-Token` and `x-hoot-instance` that signifies the instance
+        name are passed as headers.
+
+        `count` is passed as a query parameter that signifies the limit to
+        number of search results.By default, it's -1 which means returns all the
+        search results.
+
+        Conferences found that includes the search term in conference name, will
+        be returned as elements of a list object with a 200 response code, as
+        shown in `example-1`.
   /v1/say_hello:
     post:
-      summary: Say Hello
+      summary: SayHello
       tags: []
       responses:
         '201':
@@ -391,11 +592,15 @@ paths:
     parameters:
       - schema:
           type: string
+          example: Test-conf123
+          pattern: ^(?!\s*$).+
+          minLength: 1
         name: conference_name
         in: path
         required: true
+        description: conference name by which a user can identify the conference.
     post:
-      summary: Create Conference
+      summary: CreateConference
       operationId: post-v1-create_conference-conference_name
       responses:
         '200':
@@ -414,23 +619,54 @@ paths:
                   type: array
                   items:
                     type: string
+                    example: '["FTzYdTaBpUXhZ@gmail.com", "OiRWiMdPGLSPk@gmail.com"]'
                 participants:
                   type: array
                   items:
                     type: string
+                    example: '["FTzYdTaBpUXhZ@gmail.com", "OiRWiMdPGLSPk@gmail.com"]'
+              required:
+                - moderators
+                - participants
             examples: {}
+        description: >
+          Request body accepts two mandatory parameters: moderators and
+          participants. These are list objects containing email id of the
+          moderators/participants you want to include in the conference. In case
+          you want to create a conference with no moderators/participants(other
+          than yourself), assign an empty list to both the parameters.
       parameters:
         - schema:
             type: string
+            example: >-
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+            pattern: (^[\w-]*\.[\w-]*\.[\w-]*$)
+            minLength: 1
           in: header
           name: Authorization
           description: Auth JWT token from IDP
+          required: true
         - schema:
             type: string
             default: Generic
+            example: Generic
+            enum:
+              - Generic
+              - Speakerbus
+              - Melco
           in: header
           name: x-hoot-instance
           description: Instance name of the requesting entity
+          required: true
+      description: >
+        Use HooT's create conference API to seamlessly create new conferences.
+        The API returns a JSON object containing the conference details, in case
+        the conference has been successfully created, with a 200 reponse code.
+
+        `Authorization-Token` and `x-hoot-instance` that signifies the instance
+        name are passed as headers.
+
+        Conference name as `conference_name` is passed a path parameter.
   /v1/status:
     get:
       summary: Status
@@ -442,13 +678,17 @@ paths:
           description: Internal Server Error
       operationId: get-v1-status
       description: readiness & liveness probe
+      x-internal: true
   /v1/x/{b64_URL}:
     parameters:
       - schema:
           type: string
+          example: TWFueSBoYW5kcyBtYWtlIGxpZ2h0IHdvcmsu
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
         name: b64_URL
         in: path
         required: true
+        description: conference URL in encoded in Base 64 format
     get:
       summary: Xform
       tags: []
@@ -466,25 +706,46 @@ paths:
       parameters:
         - schema:
             type: string
+            example: >-
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+            pattern: (^[\w-]*\.[\w-]*\.[\w-]*$)
+            minLength: 1
           in: header
           name: Authorization
           description: Auth JWT token from IDP
+          required: true
         - schema:
             type: string
             default: Generic
+            enum:
+              - Generic
+              - Melco
+              - Speakerbus
+            example: Generic
           in: header
           name: x-hoot-instance
           description: Instance name of the requesting entity
+          required: true
+      description: >-
+        HooT's Get Base64 URL API takes Base64 encoded conference URL coined
+        `b64_URL` as a path parameter and returns the actual join URL as a JSON
+        String with 302 response code.
+
+        If the encoded URL is not valid, the API returns a 404 response code.
       x-internal: true
   /v1/conf/{conf_id}:
     parameters:
       - schema:
           type: string
+          example: 6e19e88d-634f-4872-826b-2d26503caba1
+          minLength: 1
+          pattern: ^(?!\s*$).+
         name: conf_id
         in: path
         required: true
+        description: unique conference id used to identify a conference
     delete:
-      summary: Delete Conference
+      summary: DeleteConference
       operationId: delete-v1-conf-conf_id
       responses:
         '200':
@@ -500,29 +761,61 @@ paths:
       parameters:
         - schema:
             type: string
+            example: >-
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+            pattern: (^[\w-]*\.[\w-]*\.[\w-]*$)
+            minLength: 1
           in: header
           name: Authorization
           description: Auth JWT token from IDP
+          required: true
         - schema:
             type: string
             default: Generic
+            example: Generic
+            enum:
+              - Generic
+              - Melco
+              - Speakerbus
           in: header
           name: x-hoot-instance
           description: Instance name of the requesting entity
+          required: true
+      description: >-
+        Use the delete conference API to delete any conference.
+
+        The API returns a 200 response code when a conference has been
+        successfully deleted, else it will return a 404 response code if no
+        conference is found with the given conference id.
+
+        `Authorization-Token` and `x-hoot-instance` that signifies the instance
+        name are passed as headers.
+
+        Conference ID as `conf_id` is passed as a path parameter to uniquely
+        identify the conference.
   /v1/user/{user_id}/search_strings/{search_string}:
     parameters:
       - schema:
           type: string
+          example: a5c818fb-bd18-41f6-a030-745ff9fe7f21
+          pattern: ^(?!\s*$).+
+          minLength: 1
+          maxLength: 36
         name: user_id
         in: path
         required: true
+        description: unique user id to identify a user
       - schema:
           type: string
+          example: searchterm1
+          minLength: 1
+          pattern: ^[a-zA-Z0-9_]*$
         name: search_string
         in: path
         required: true
+        description: search term to be added to user's search history
     put:
-      summary: Search Conferences
+      summary: AddUserSearchString
       operationId: put-user-user_id-search_strings-;
       responses:
         '200':
@@ -530,24 +823,52 @@ paths:
       parameters:
         - schema:
             type: string
+            example: >-
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+            pattern: (^[\w-]*\.[\w-]*\.[\w-]*$)
+            minLength: 1
           in: header
           name: Authorization
           description: Auth JWT token from IDP
+          required: true
         - schema:
             type: string
             default: Generic
+            enum:
+              - Generic
+              - Melco
+              - Speakerbus
+            example: Generic
           in: header
           name: x-hoot-instance
           description: Instance name of the requesting entity
+          required: true
+      description: >-
+        Use HooT's Add Search Term API to add a search term to user's search
+        history.
+
+        The API takes the user's unique user id as `user_id` and search term as
+        `search_string`,as path parameters.
+
+        `Authorization-Token` and `x-hoot-instance` that signifies the instance
+        name are passed as headers.
+
+        On successfully adding the search term, the API will return a 200
+        response code.
   /v1/user/{user_id}/search_strings:
     parameters:
       - schema:
           type: string
+          pattern: ^(?!\s*$).+
+          minLength: 1
+          maxLength: 36
+          example: a5c818fb-bd18-41f6-a030-745ff9fe7f21
         name: user_id
         in: path
         required: true
+        description: unique user id to identify a user
     get:
-      summary: Get User's Search Strings
+      summary: UserSearchStrings
       operationId: get-user-user_id-search_strings
       responses:
         '200':
@@ -558,6 +879,11 @@ paths:
                 type: array
                 items:
                   type: string
+              examples:
+                example-1:
+                  value:
+                    - searchterm1
+                    - searchterm2
         '404':
           description: Not Found
         '500':
@@ -565,6 +891,10 @@ paths:
       parameters:
         - schema:
             type: string
+            example: >-
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+            pattern: (^[\w-]*\.[\w-]*\.[\w-]*$)
+            minLength: 1
           in: header
           name: Authorization
           description: Auth JWT token from IDP
@@ -572,13 +902,29 @@ paths:
         - schema:
             type: string
             default: Generic
+            enum:
+              - Generic
+              - Melco
+              - Speakerbus
+            example: Generic
           in: header
           name: x-hoot-instance
           description: Instance name of the requesting entity
           required: true
+      description: >-
+        Use HooT's Search Term API to get a list of user's search history.
+
+        The API takes the user's unique user id as `user_id` as a path
+        parameter.
+
+        `Authorization-Token` and `x-hoot-instance` that signifies the instance
+        name are passed as headers.
+
+        On successful execution, the API will return a JSON object as shown in
+        `example-1`,with a 200 response code.
   /v1/check_entry_code:
     post:
-      summary: Check Entry Code
+      summary: CheckEntryCode
       operationId: post-v1-check_entry_code
       responses:
         '200':
@@ -599,11 +945,15 @@ paths:
     parameters:
       - schema:
           type: string
+          example: 6e19e88d-634f-4872-826b-2d26503caba1
+          minLength: 1
+          pattern: ^(?!\s*$).+
         name: conf_id
         in: path
         required: true
+        description: unique conference id used to identify a conference
     post:
-      summary: Edit Conference
+      summary: EditConference
       operationId: post-v1-edit_conference-conference_name
       responses:
         '200':
@@ -612,6 +962,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/partyconf'
+              examples: {}
         '403':
           description: Forbidden
           content:
@@ -640,14 +991,21 @@ paths:
                   type: array
                   items:
                     type: string
+                    example: '["FTzYdTaBpUXhZ@gmail.com", "OiRWiMdPGLSPk@gmail.com"]'
                 new_participants:
                   type: array
                   items:
                     type: string
+                    example: '["FTzYdTaBpUXhZ@gmail.com", "OiRWiMdPGLSPk@gmail.com"]'
                 remove_users:
                   type: array
                   items:
                     type: string
+                    example: '["FTzYdTaBpUXhZ@gmail.com", "OiRWiMdPGLSPk@gmail.com"]'
+              required:
+                - new_moderators
+                - new_participants
+                - remove_users
             examples:
               example-1:
                 value:
@@ -658,9 +1016,21 @@ paths:
                     - client@business.com
                   remove_users:
                     - kkk@gmail.com
+        description: >-
+          Request body accepts three mandatory parameters: new moderators as
+          `new_moderators`,new participants as `new_participants` and remove
+          users as `remove_users` .These are list objects containing email id of
+          the moderators/participants you want to include/remove from the
+          conference. 
+
+          In case you want to leave one of these parameters blank, just assign
+          an empty list to the said parameter
       parameters:
         - schema:
             type: string
+            pattern: (^[\w-]*\.[\w-]*\.[\w-]*$)
+            example: >-
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
           in: header
           name: Authorization
           description: Auth JWT token from IDP
@@ -668,22 +1038,41 @@ paths:
         - schema:
             type: string
             default: Generic
+            enum:
+              - Generic
+              - Speakerbus
+              - Melco
+            example: Generic
           in: header
           name: x-hoot-instance
           description: Instance name of the requesting entity
           required: true
-      description: >-
-        Edit the conference `conf_id` users, provide `new_moderators`,
-        `new_participants` and users to be removed as `remove_users`
+      description: >
+        Leverage HooT's edit conference API to add/remove participants from an
+        existing conference. Additionally you can use this API to add existing
+        participants or new participants as moderators to the conference.
+
+        The API takes Conference ID as `conf_id` as a path parameter to uniquely
+        identify the conference.
+
+        `Authorization-Token` and `x-hoot-instance` that signifies the instance
+        name are passed as headers.
+
+        On successfully edit, the API returns a 200 reponse code with a JSON
+        object as shown in `example-1`.
   /v1/conf/{conf_id}/all_users:
     parameters:
       - schema:
           type: string
+          example: 6e19e88d-634f-4872-826b-2d26503caba1
+          pattern: ^(?!\s*$).+
+          minLength: 1
         name: conf_id
         in: path
         required: true
+        description: unique conference id used to identify a conference.
     get:
-      summary: Get all users of a conference
+      summary: AllUsersofConference
       tags: []
       responses:
         '200':
@@ -692,21 +1081,26 @@ paths:
             application/json:
               schema:
                 type: object
-                properties:
-                  moderators:
-                    type: array
-                    items:
-                      type: string
-                  participants:
-                    type: array
-                    items:
-                      type: string
                 x-examples:
                   example-1:
                     moderators:
                       - abc@f.com
                     participants:
                       - dev@gmail.com
+                properties:
+                  moderators:
+                    type: array
+                    items:
+                      type: string
+                      example: '["FTzYdTaBpUXhZ@gmail.com", "OiRWiMdPGLSPk@gmail.com"]'
+                  participants:
+                    type: array
+                    items:
+                      type: string
+                      example: '["FTzYdTaBpUXhZ@gmail.com", "OiRWiMdPGLSPk@gmail.com"]'
+                required:
+                  - moderators
+                  - participants
               examples:
                 example-1:
                   value:
@@ -716,11 +1110,27 @@ paths:
                       - dev@gmail.com
       operationId: get-v1-conf-conf_id-all_users
       description: >-
-        Get all participants and moderators of a conference with conference ID
-        as `conf_id`.
+        Use HooT's Get All Users API to fetch the list of all participants and
+        moderators of a conference. The API takes conference ID as `conf_id` as
+        a path param to identify the conference.
+
+        If a conference is found with the given conference ID, the API will
+        return a JSON object with two parameters `moderators` and `participants`
+        containing the list of moderators and participants in the conference
+        respectively.
+
+        `Authorization-Token` and `x-hoot-instance` that signifies the instance
+        name are passed as headers.
+
+        Conference ID as `conf_id` is passed as a path parameter to uniquely
+        identify the conference
       parameters:
         - schema:
             type: string
+            example: >-
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+            pattern: (^[\w-]*\.[\w-]*\.[\w-]*$)
+            minLength: 1
           in: header
           name: Authorization
           description: Auth JWT token from IDP
@@ -728,13 +1138,18 @@ paths:
         - schema:
             type: string
             default: Generic
+            example: Generic
+            enum:
+              - Generic
+              - Speakerbus
+              - Melco
           in: header
           name: x-hoot-instance
           description: Instance name of the requesting entity
           required: true
   /v1/x:
     get:
-      summary: X - internal
+      summary: XformByQueryParam
       tags: []
       operationId: get-v1-x
       parameters:
@@ -765,11 +1180,10 @@ paths:
               schema:
                 type: string
               description: Location of the Conference
-      x-internal: true
 components:
   schemas:
     user:
-      description: ''
+      description: User object that contains various user information.
       type: object
       x-examples:
         example-1:
@@ -788,36 +1202,52 @@ components:
         given_name:
           type: string
           minLength: 1
+          example: Dale
         family_name:
           type: string
           minLength: 1
+          example: Steyn
         nickname:
           type: string
           minLength: 1
+          example: Dale Steyn
         name:
           type: string
           minLength: 1
+          example: Dale Steyn
         picture:
           type: string
           minLength: 1
+          example: >-
+            https://lh3.googleusercontent.com/a/ALm5wu3AXCbIRnDXn_dMPR1HDhBfHLJ0h51u6q4XyWru=s96-c1
         locale:
           type: string
           minLength: 1
         updated_at:
           type: string
           minLength: 1
+          example: '2022-11-15T12:00:49.009Z'
         email:
           type: string
           minLength: 1
+          pattern: ^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+
+          example: dev@mpsc.io
         email_verified:
           type: boolean
         sub:
           type: string
           minLength: 1
+          pattern: ^(?!\s*$).+
+          example: google-oauth2|113951147567304752181
         uuid:
           type: string
+          example: 938de4da-e94f-4367-80e7-c672814a55b0
+          maxLength: 36
+          minLength: 1
+          pattern: ^(?!\s*$).+
         username:
           type: string
+          minLength: 1
         idpRegistered:
           type: boolean
       required:
@@ -834,20 +1264,25 @@ components:
           type: string
         meta:
           type: object
-      examples:
-        - code: 503
-          reason: the conference already exists
-          meta:
-            timestamp: ''
-            reported_by: actor
+      x-examples:
+        example-1:
+          code: 504
+          reason: internal error
+          meta: {}
     conference:
       type: object
       x-examples: {}
+      description: Conference object that contains various attributes used in a conference.
       properties:
         id:
           type: string
+          pattern: ^(?!\s*$).+
+          minLength: 1
+          example: 23f4c53b-4719-4581-96ca-dcc48cb8cadf
         name:
           type: string
+          example: Test-conf123
+          minLength: 1
         coremx:
           $ref: '#/components/schemas/coremx'
         owners:
@@ -864,14 +1299,27 @@ components:
           type: string
         welcome:
           type: string
+          example: '<br>Welcome to <b>Test-aGMJXQYoP, SIP extn: 97263211</b>!'
+          minLength: 1
         dial_number:
           type: string
+          minLength: 1
+          example: +44(0)35150021
+          maxLength: 14
         voice_bridge:
           type: string
+          example: '91991891'
+          minLength: 1
+          maxLength: 8
+          pattern: ^(0|[1-9][0-9]*)$
         web_voice:
           type: string
         logout_url:
           type: string
+          pattern: >-
+            https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)
+          minLength: 1
+          example: https://dev.hoot.mx
         record:
           type: string
         duration:
@@ -890,6 +1338,18 @@ components:
           type: string
           description: X-Hoot-Instance of the CoreMX
           default: Generic
+          pattern: ^[a-zA-Z0-9_]*$
+          example: Generic
+          minLength: 1
+      required:
+        - id
+        - name
+        - coremx
+        - owners
+        - participants
+        - logout_url
+        - is_active
+        - hoot_instance
     coremx:
       title: coremx
       type: object
@@ -899,8 +1359,15 @@ components:
       properties:
         uuid:
           type: string
+          pattern: ^(?!\s*$).+
+          maxLength: 36
+          minLength: 1
+          example: a5c818fb-bd18-41f6-a030-745ff9fe7f22
         name:
           type: string
+          example: gcp-z2
+          pattern: ^(?!\s*$).+
+          minLength: 1
         parent_cloud:
           type: string
           enum:
@@ -910,6 +1377,10 @@ components:
           default: gcp
         global_address:
           type: string
+          example: https://gcp-a1.hoot.mx/hoot/api/
+          minLength: 1
+          pattern: >-
+            https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)
         capabilities:
           type: array
           items:
@@ -933,21 +1404,29 @@ components:
     sip:
       title: sip
       type: object
+      x-examples: {}
+      description: SIP object that contains information to make a conference call over SIP.
       properties:
         location:
           type: string
-          pattern: ^(sip|sips)://
+          pattern: '^(sip|sips):'
+          example: sip:97263212@gcp-a1.hoot.mx
+          minLength: 1
         username:
           type: string
+          example: sip:28012@gcp-a1.hoot.mx
+          minLength: 1
         secret:
           type: string
+          pattern: ^[a-zA-Z0-9]*$
+          minLength: 1
+          example: i1Aq7prad0lNXL6Fiawn123
         headers:
           type: object
         codecs:
           type: array
           items:
             type: string
-      x-examples: {}
     entity:
       title: entity
       x-stoplight:
@@ -966,18 +1445,22 @@ components:
           $ref: '#/components/schemas/coremx'
     participant:
       title: participant
-      x-stoplight:
-        id: 9r0nh1aoi8pbz
       type: object
       properties:
         user:
           $ref: '#/components/schemas/user'
         join_url:
           type: string
+          minLength: 1
+          example: >-
+            https://devapi.hoot.mx/v1//x?u=aPJ0cHM6Ly9wZml6ZXIubXBzYy5pby9ob290L2FwaS9qb2luP2F2YXRhclVSTD1odHRwcyUzQSUyRiUyRnMuZ3JhdmF0YXIuY29tJTJGYXZhdGFyJTJGZmFmMWI5MDBiOGIwZmJkMzJmMDIwZDA4Yzc3YWQzMjMlM0ZzJTNENDgwJTI2ciUzRHBnJTI2ZCUzRGh0dHBzJTI1M0ElMjUyRiUyNTJGY2RuLmF1dGgwLmNvbSUyNTJGYXZhdGFycyUyNTJGYmkucG5nJmNoZWNrc3VtPTJiMGMyMjQ5Mjk5ODg3OWRkZTBmZDhhM2RhYjhjYjFlMmE2ZjM3NzQmZnVsbE5hbWU9YmlyYXRiaGF0dGFjaGFyamVlJTQwZ21haWwuY29tJm1lZXRpbmdJRD1mZmQ4MTIxNy0yZjYxLTRjYTQtODVlNi00MWZhNWY4ZTQwMDkmcGFzc3dvcmQ9dFJrenp6Y3VCa2Z3ZVlac0VQbXlWUkZ5JnJlZGlyZWN0PXRydWUmdXNlcklEPTkzOGRlNGRhLWU5NGYtNDM2Ny04MGU3LWM2NzI4MTRhNTVlNg==
         is_moderator:
           type: boolean
         conf_provider_id:
           type: string
+          pattern: ^(?!\s*$).+
+          minLength: 1
+          example: 23f4c53b-4119-4581-96ca-dcc48cb8cadb
         is_presenter:
           type: boolean
         is_listen_only:
@@ -991,6 +1474,36 @@ components:
           type: string
           description: |
             id is same as user.uuid
+          pattern: ^(?!\s*$).+
+          minLength: 1
+          example: 23f4c53b-4129-4581-96ca-dcc48cb8cadb
+      description: >-
+        Participant object that contains details of a participant or a moderator
+        in a conference.
+      x-examples:
+        example-1:
+          user:
+            given_name: Dale
+            family_name: Steyn
+            nickname: Dale Steyn
+            name: Dale Steyn
+            picture: https://lh3.googleusercontent.com/a/fadf=s96-c1
+            locale: string
+            updated_at: '2022-11-15T12:00:49.009Z'
+            email: try@me.io
+            email_verified: true
+            sub: google-oauth2|113951147567304752181
+            uuid: 938de4da-e94f-4367-80e7-c672814a55b0
+            username: string
+            idpRegistered: true
+          join_url: https://devapi.hoot.mx/v1//x?u=asd==
+          is_moderator: true
+          conf_provider_id: 23f4c53b-4129-4581-46ca-dcc48cb8cadb
+          is_presenter: true
+          is_listen_only: true
+          has_video: true
+          client_type: HTML5
+          id: xxxx-4129-4581-46ca-dcc46cb8cadb
     partyconf:
       title: userpartyconfconf
       x-stoplight:
