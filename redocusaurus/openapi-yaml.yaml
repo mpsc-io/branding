@@ -1307,6 +1307,61 @@ paths:
                             - /v1/deep_link/*
       operationId: get-apple-app-site-association
       x-internal: true
+  /v1/deep_link/{token}/{participant_id}/sip:
+    parameters:
+      - schema:
+          type: string
+        name: token
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: participant_id
+        in: path
+        required: true
+    get:
+      summary: GetSIPDetailsForUserViaDeepLink
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/sip'
+        '404':
+          description: Not Found
+      operationId: get-v1-deep_link-token-sip
+      parameters: []
+  /v1/deep_link_bypass/{token}/{participant_id}/sip:
+    parameters:
+      - schema:
+          type: string
+        name: token
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: participant_id
+        in: path
+        required: true
+    get:
+      summary: GetSIPDetailsForUserViaDeepLink-Bypass
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/sip'
+        '404':
+          description: Not Found
+      operationId: get-v1-deep_link-token-bypass-sip
+      parameters: []
+      description: >-
+        Bypass links are to break iOS universal link loop but to exactly same as
+        the non bypass equivalent.
 components:
   schemas:
     user:
@@ -1554,6 +1609,16 @@ components:
           type: array
           items:
             type: string
+        domain:
+          type: string
+          description: SIP domain
+        protocol:
+          type: string
+          description: TCP or UDP
+          enum:
+            - TCP
+            - UDP
+          default: UDP
     entity:
       title: entity
       x-stoplight:
