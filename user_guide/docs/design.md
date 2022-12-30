@@ -130,3 +130,14 @@ CASH links up to cloud local registry service and updates about its health and s
 
 1. Registry Identification - identify the registry based on a pre-defined list or use a iroulette service (intelligent-roulette) to identify the best resgistry for you based on your location and other factors.
 2. Call Orchestration - Initiate call-orchestration APIs ( create , join etc). . Call Control - Based on the CoreMX's direct URL, initiate call control APIs.
+
+# Call Creation Workflow
+
+![](./img/callwf.png)
+
+## SIP Accounts for the user
+
+The CoreMX core distributor algorithm will ensure that every unique user will have a unique numeric SIP `UserID` across all CoreMXes.
+This means that, the user will never have to change their SIP user ID. The `domain` may change if the call has been relocated to a different CoreMX.
+
+The SIP `secret` will change by the call. However for a particular conference participant, the secret will also be same across different CoreMXs.
