@@ -50,7 +50,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/error'
       description: |-
-        HooT's Login API allows you to record or register login event of a user. 
+        HooT's WebLogin API allows you to record or register login event of a user. 
         `Authorization-Token` and `x-hoot-instance` that signifies the instance name are passed as headers.
         The API returns a JSON object with two parameters: user id as `user_id` and `user_uuid` as unique user id. This unique user id is used to identify the user across the conferencing system
       parameters:
@@ -137,7 +137,7 @@ paths:
           description: Instance name of the requesting entity
           required: true
       description: |-
-        Use HooT's Check Conference API to check if a conference is alive.
+        Use HooT's CheckConferenceByID API to check if a conference is alive.
         The API takes Conference ID coined `conf_id` as a path parameter.
         `Authorization-Token` and `x-hoot-instance` that signifies the instance name are passed as headers.
         The API returns a 200 response code in case a conference with the given Conference ID is alive, else it returns a 404 reponse code.
@@ -202,7 +202,7 @@ paths:
           description: Instance name of the requesting entity
           required: true
       description: |-
-        Use HooT's Last Joined Conferences API to fetch list of conferences recently joined by the user within a valid range of values (to,from).
+        Use HooT's UserLastJoinedConferences API to fetch list of conferences recently joined by the user within a valid range of values (to,from).
         `Authorization-Token` and `x-hoot-instance` that signifies the instance name are passed as headers.
         Unique user id as `user_uuid` is passed as a path parameter to identify the user for whom the list of last joined conferences is to be retrieved.
         If from is greater than maximum number of conferences joined by the user, then 204 is returned as the response code with no reponse body.
@@ -268,7 +268,7 @@ paths:
           description: Instance name of the requesting entity
           required: true
       description: |-
-        Use HooT's Invited To Conferences API to fetch list of conferences a user has been invited to, within a valid range of values (to,from).
+        Use HooT's UserInvitedToConferences API to fetch list of conferences a user has been invited to, within a valid range of values (to,from).
         `Authorization-Token` and `x-hoot-instance` that signifies the instance name are passed as headers.
         Unique user id as `user_uuid` is passed as a path parameter to identify the user for whom the list of invited conferences is to be retrieved.
         If from is greater than maximum number of conferences the user has been invited to, then 204 is returned as the response code with no reponse body.
@@ -276,7 +276,7 @@ paths:
   '/v1/user/{user_uuid}/favourite_conferences':
     get:
       description: |-
-        HooT's Favourite Conferences API fetches the list of conferences a user has marked as favourite.
+        HooT's UserFavouriteConference API fetches the list of conferences a user has marked as favourite.
         The API returns the list of all the conferences user has marked as favourite in the form of a JSON object.
         Unique user id as `user_uuid` is passed as a path parameter to identify the user for whom the favoruite conferences are to be retrieved.
         `Authorization-Token` and `x-hoot-instance` that signifies the instance name are passed as headers.
@@ -312,6 +312,7 @@ paths:
           description: Instance name of the requesting entity
           required: true
       summary: UserFavouriteConference
+      operationId: get-user-user_uuid-favourite_conferences
     parameters:
       - schema:
           type: string
@@ -373,7 +374,7 @@ paths:
           description: Instance name of the requesting entity
           required: true
       description: |-
-        You can leverage HooT's Set Favourite Conference API to mark a conference as favourite for a particular user. 
+        You can leverage HooT's UserSetFavouriteConference API to mark a conference as favourite for a particular user. 
         On successful addition to the Favourites list, the API will return a 202 response code.
         Conference Id as `conf_id` and Unique user id as `user_uuid` are passed as path parameters to identify the conference and user respectively.
         `Authorization-Token` and `x-hoot-instance` that signifies the instance name are passed as headers.
@@ -427,7 +428,7 @@ paths:
           description: Instance name of the requesting entity
           required: true
       description: |-
-        You can leverage HooT's Unset Favourite Conference API to remove a conference from favourites for a particular user. 
+        You can leverage HooT's UserUnsetFavouriteConference API to remove a conference from favourites for a particular user. 
         On successful removal from Favourites, the API will return a 202 response code.
         Conference Id as `conf_id` and Unique user id as `user_uuid` are passed as path parameters to identify the conference and user respectively.
         `Authorization-Token` and `x-hoot-instance` that signifies the instance name are passed as headers.
@@ -477,7 +478,7 @@ paths:
           description: Instance name of the requesting entity
           required: true
       description: |
-        Leverage HooT's Search Conference API to fetch list of conferences that include the search string coined `search_string`, passed a path parameter.
+        Leverage HooT's SearchConferences API to fetch list of conferences that include the search string coined `search_string`, passed a path parameter.
         `Authorization-Token` and `x-hoot-instance` that signifies the instance name are passed as headers.
         `count` is passed as a query parameter that signifies the limit to number of search results.By default, it's -1 which means returns all the search results.
         Conferences found that includes the search term in conference name, will be returned as elements of a list object with a 200 response code, as shown in `example-1`.
@@ -578,7 +579,7 @@ paths:
           description: Instance name of the requesting entity
           required: true
       description: |
-        Use HooT's create conference API to seamlessly create new conferences. The API returns a JSON object containing the conference details, in case the conference has been successfully created, with a 200 reponse code.
+        Use HooT's CreateConference API to seamlessly create new conferences. The API returns a JSON object containing the conference details, in case the conference has been successfully created, with a 200 reponse code.
         `Authorization-Token` and `x-hoot-instance` that signifies the instance name are passed as headers.
         Conference name as `conference_name` is passed a path parameter.
   /v1/status:
@@ -691,7 +692,7 @@ paths:
           description: Instance name of the requesting entity
           required: true
       description: |-
-        Use the delete conference API to delete any conference.
+        Use the DeleteConference API to delete any conference.
         The API returns a 200 response code when a conference has been successfully deleted, else it will return a 404 response code if no conference is found with the given conference id.
         `Authorization-Token` and `x-hoot-instance` that signifies the instance name are passed as headers.
         Conference ID as `conf_id` is passed as a path parameter to uniquely identify the conference.
@@ -745,7 +746,7 @@ paths:
           description: Instance name of the requesting entity
           required: true
       description: |-
-        Use HooT's Add Search Term API to add a search term to user's search history.
+        Use HooT's AddUserSearchString API to add a search term to user's search history.
         The API takes the user's unique user id as `user_id` and search term as `search_string`,as path parameters.
         `Authorization-Token` and `x-hoot-instance` that signifies the instance name are passed as headers.
         On successfully adding the search term, the API will return a 200 response code.
@@ -805,7 +806,7 @@ paths:
           description: Instance name of the requesting entity
           required: true
       description: |-
-        Use HooT's Search Term API to get a list of user's search history.
+        Use HooT's UserSearchStrings API to get a list of user's search history.
         The API takes the user's unique user id as `user_id` as a path parameter.
         `Authorization-Token` and `x-hoot-instance` that signifies the instance name are passed as headers.
         On successful execution, the API will return a JSON object as shown in `example-1`,with a 200 response code.
@@ -928,7 +929,7 @@ paths:
           description: Instance name of the requesting entity
           required: true
       description: |
-        Leverage HooT's edit conference API to add/remove participants from an existing conference. Additionally you can use this API to add existing participants or new participants as moderators to the conference.
+        Leverage HooT's EditConference API to add/remove participants from an existing conference. Additionally you can use this API to add existing participants or new participants as moderators to the conference.
         The API takes Conference ID as `conf_id` as a path parameter to uniquely identify the conference.
         `Authorization-Token` and `x-hoot-instance` that signifies the instance name are passed as headers.
         On successfully edit, the API returns a 200 reponse code with a JSON object as shown in `example-1`.
@@ -982,7 +983,7 @@ paths:
                       - dev@gmail.com
       operationId: get-v1-conf-conf_id-all_users
       description: |-
-        Use HooT's Get All Users API to fetch the list of all participants and moderators of a conference. The API takes conference ID as `conf_id` as a path param to identify the conference.
+        Use HooT's AllUsersofConference API to fetch the list of all participants and moderators of a conference. The API takes conference ID as `conf_id` as a path param to identify the conference.
         If a conference is found with the given conference ID, the API will return a JSON object with two parameters `moderators` and `participants` containing the list of moderators and participants in the conference respectively.
         `Authorization-Token` and `x-hoot-instance` that signifies the instance name are passed as headers.
         Conference ID as `conf_id` is passed as a path parameter to uniquely identify the conference
@@ -1041,6 +1042,181 @@ paths:
               schema:
                 type: string
               description: Location of the Conference
+  '/v1/deep_link/{token}':
+    parameters:
+      - schema:
+          type: string
+        name: token
+        in: path
+        required: true
+    get:
+      summary: DeepLinkViaToken
+      tags: []
+      responses:
+        '302':
+          description: Redirection to JoinURL
+          headers:
+            Location:
+              schema:
+                type: string
+              description: Location header for the conference.
+      operationId: get-v1-deep_link-token
+      x-internal: true
+      description: DeepLink is an internal API which will activate the rails for joining a call and for relocating the coreMX if needed.
+  '/v1/deep_link_bypass/{token}':
+    parameters:
+      - schema:
+          type: string
+        name: token
+        in: path
+        required: true
+    get:
+      summary: DeepLinkViaTokenBypass
+      tags: []
+      responses:
+        '302':
+          description: Redirection to JoinURL
+          headers:
+            Location:
+              schema:
+                type: string
+              description: Location header for the conference.
+      operationId: get-v1-deep_link-token-bypass
+      x-internal: true
+      description: Deep Link Bypass is to break the cyclic loop against iOS universal links.
+  '/v1/conf_by_deep_link/{deep_link_token}':
+    parameters:
+      - schema:
+          type: string
+        name: deep_link_token
+        in: path
+        required: true
+    get:
+      summary: GetConferenceByDeepLinkToken
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/conference_join'
+              examples: {}
+            application/xml:
+              schema:
+                type: object
+                properties: {}
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      operationId: get-v1-conf_by_deep_link-deep_link_token
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: x-hoot-instance
+          description: Instance name of the requesting entity
+        - schema:
+            type: string
+          in: header
+          name: Authorization
+          description: Auth JWT token from IDP
+      x-internal: true
+  /apple-app-site-association:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  applinks:
+                    type: object
+                    properties:
+                      apps:
+                        type: array
+                        items:
+                          type: object
+                          properties: {}
+                      details:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            appID:
+                              type: string
+                            paths:
+                              type: array
+                              items:
+                                type: string
+                x-examples:
+                  Example 1:
+                    applinks:
+                      apps: []
+                      details:
+                        - appID: 4P383YW2V3.com.hoot.IOS
+                          paths:
+                            - /v1/deep_link/*
+      operationId: get-apple-app-site-association
+      x-internal: true
+  '/v1/deep_link/{token}/{participant_id}/sip':
+    parameters:
+      - schema:
+          type: string
+        name: token
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: participant_id
+        in: path
+        required: true
+    get:
+      summary: GetSIPDetailsForUserViaDeepLink
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/sip'
+        '404':
+          description: Not Found
+      operationId: get-v1-deep_link-token-sip
+      parameters: []
+  '/v1/deep_link_bypass/{token}/{participant_id}/sip':
+    parameters:
+      - schema:
+          type: string
+        name: token
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: participant_id
+        in: path
+        required: true
+    get:
+      summary: GetSIPDetailsForUserViaDeepLink-Bypass
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/sip'
+        '404':
+          description: Not Found
+      operationId: get-v1-deep_link-token-bypass-sip
+      parameters: []
+      description: Bypass links are to break iOS universal link loop but to exactly same as the non bypass equivalent.
 components:
   schemas:
     user:
@@ -1284,6 +1460,16 @@ components:
           type: array
           items:
             type: string
+        domain:
+          type: string
+          description: SIP domain
+        protocol:
+          type: string
+          description: TCP or UDP
+          enum:
+            - TCP
+            - UDP
+          default: UDP
     entity:
       title: entity
       x-stoplight:
@@ -1303,10 +1489,39 @@ components:
     participant:
       title: participant
       type: object
+      description: Participant object that contains details of a participant or a moderator in a conference.
+      x-examples:
+        example-1:
+          user:
+            given_name: Dale
+            family_name: Steyn
+            nickname: Dale Steyn
+            name: Dale Steyn
+            picture: 'https://lh3.googleusercontent.com/a/fadf=s96-c1'
+            locale: string
+            updated_at: '2022-11-15T12:00:49.009Z'
+            email: try@me.io
+            email_verified: true
+            sub: google-oauth2|113951147567304752181
+            uuid: 938de4da-e94f-4367-80e7-c672814a55b0
+            username: string
+            idpRegistered: true
+          join_url: 'https://devapi.hoot.mx/v1//x?u=asd=='
+          is_moderator: true
+          conf_provider_id: 23f4c53b-4129-4581-46ca-dcc48cb8cadb
+          is_presenter: true
+          is_listen_only: true
+          has_video: true
+          client_type: HTML5
+          id: xxxx-4129-4581-46ca-dcc46cb8cadb
       properties:
         user:
           $ref: '#/components/schemas/user'
         join_url:
+          type: string
+          minLength: 1
+          example: 'https://devapi.hoot.mx/v1//x?u=aPJ0cHM6Ly9wZml6ZXIubXBzYy5pby9ob290L2FwaS9qb2luP2F2YXRhclVSTD1odHRwcyUzQSUyRiUyRnMuZ3JhdmF0YXIuY29tJTJGYXZhdGFyJTJGZmFmMWI5MDBiOGIwZmJkMzJmMDIwZDA4Yzc3YWQzMjMlM0ZzJTNENDgwJTI2ciUzRHBnJTI2ZCUzRGh0dHBzJTI1M0ElMjUyRiUyNTJGY2RuLmF1dGgwLmNvbSUyNTJGYXZhdGFycyUyNTJGYmkucG5nJmNoZWNrc3VtPTJiMGMyMjQ5Mjk5ODg3OWRkZTBmZDhhM2RhYjhjYjFlMmE2ZjM3NzQmZnVsbE5hbWU9YmlyYXRiaGF0dGFjaGFyamVlJTQwZ21haWwuY29tJm1lZXRpbmdJRD1mZmQ4MTIxNy0yZjYxLTRjYTQtODVlNi00MWZhNWY4ZTQwMDkmcGFzc3dvcmQ9dFJrenp6Y3VCa2Z3ZVlac0VQbXlWUkZ5JnJlZGlyZWN0PXRydWUmdXNlcklEPTkzOGRlNGRhLWU5NGYtNDM2Ny04MGU3LWM2NzI4MTRhNTVlNg=='
+        join_url_bypass:
           type: string
           minLength: 1
           example: 'https://devapi.hoot.mx/v1//x?u=aPJ0cHM6Ly9wZml6ZXIubXBzYy5pby9ob290L2FwaS9qb2luP2F2YXRhclVSTD1odHRwcyUzQSUyRiUyRnMuZ3JhdmF0YXIuY29tJTJGYXZhdGFyJTJGZmFmMWI5MDBiOGIwZmJkMzJmMDIwZDA4Yzc3YWQzMjMlM0ZzJTNENDgwJTI2ciUzRHBnJTI2ZCUzRGh0dHBzJTI1M0ElMjUyRiUyNTJGY2RuLmF1dGgwLmNvbSUyNTJGYXZhdGFycyUyNTJGYmkucG5nJmNoZWNrc3VtPTJiMGMyMjQ5Mjk5ODg3OWRkZTBmZDhhM2RhYjhjYjFlMmE2ZjM3NzQmZnVsbE5hbWU9YmlyYXRiaGF0dGFjaGFyamVlJTQwZ21haWwuY29tJm1lZXRpbmdJRD1mZmQ4MTIxNy0yZjYxLTRjYTQtODVlNi00MWZhNWY4ZTQwMDkmcGFzc3dvcmQ9dFJrenp6Y3VCa2Z3ZVlac0VQbXlWUkZ5JnJlZGlyZWN0PXRydWUmdXNlcklEPTkzOGRlNGRhLWU5NGYtNDM2Ny04MGU3LWM2NzI4MTRhNTVlNg=='
@@ -1333,31 +1548,6 @@ components:
           pattern: ^(?!\s*$).+
           minLength: 1
           example: 23f4c53b-4129-4581-96ca-dcc48cb8cadb
-      description: Participant object that contains details of a participant or a moderator in a conference.
-      x-examples:
-        example-1:
-          user:
-            given_name: Dale
-            family_name: Steyn
-            nickname: Dale Steyn
-            name: Dale Steyn
-            picture: 'https://lh3.googleusercontent.com/a/fadf=s96-c1'
-            locale: string
-            updated_at: '2022-11-15T12:00:49.009Z'
-            email: try@me.io
-            email_verified: true
-            sub: google-oauth2|113951147567304752181
-            uuid: 938de4da-e94f-4367-80e7-c672814a55b0
-            username: string
-            idpRegistered: true
-          join_url: 'https://devapi.hoot.mx/v1//x?u=asd=='
-          is_moderator: true
-          conf_provider_id: 23f4c53b-4129-4581-46ca-dcc48cb8cadb
-          is_presenter: true
-          is_listen_only: true
-          has_video: true
-          client_type: HTML5
-          id: xxxx-4129-4581-46ca-dcc46cb8cadb
     partyconf:
       title: userpartyconfconf
       x-stoplight:
@@ -1370,6 +1560,20 @@ components:
           $ref: '#/components/schemas/participant'
         conference:
           $ref: '#/components/schemas/conference'
+    conference_join:
+      title: conference_join
+      x-stoplight:
+        id: wx7567oiwprvu
+      type: object
+      properties:
+        conference:
+          $ref: '#/components/schemas/conference'
+        coremx_join_url:
+          type: string
+          pattern: '^(http|https)://'
+      required:
+        - conference
+        - coremx_join_url
   securitySchemes:
     Authorization:
       type: http
