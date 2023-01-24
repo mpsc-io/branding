@@ -7,7 +7,7 @@ slug: /
 
 Let's discover **HooT** in less than 5 minutes.
 
-## Getting Started
+# Getting Started
 
 Get started by **downloading the HooT application on your Android or IOS device**.
 
