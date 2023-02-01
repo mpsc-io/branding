@@ -4,11 +4,11 @@ import styles from './styles.module.css';
 import '../../main.css';
 const FeatureList = [
   {
-    title: 'Customisable',
+    title: 'Feature-Rich',
     Svg: require('@site/static/img/feature1.svg').default,
     description: (
       <>
-        Depending upon your business, we offer customisable, configuration based UX and UI. With a rich library of pre-built widgets to chose from.
+        Multi-Platform Collaboration Suite - Video, Audio, SIP, Digital Whiteboard, Chat, Annotations with never-ending conferences, entirely driven by API.
       </>
     ),
   },
