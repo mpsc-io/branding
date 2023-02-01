@@ -176,10 +176,6 @@ const config = {
               },
               {
                 label: 'Corp Deployment 1',
-                href: 'https://melco.hoot.mx/',
-              },
-              {
-                label: 'Corp Deployment 2',
                 href: 'https://speakerbus-internal.hoot.mx/',
               },
             ]
