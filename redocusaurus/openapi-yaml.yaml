@@ -1362,6 +1362,47 @@ paths:
       description: >-
         Bypass links are to break iOS universal link loop but to exactly same as
         the non bypass equivalent.
+  /.well-known/assetlinks.json:
+    get:
+      summary: Android Asset Link
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    relation:
+                      type: array
+                      items:
+                        type: string
+                    target:
+                      type: object
+                      properties:
+                        namespace:
+                          type: string
+                        package_name:
+                          type: string
+                        sha256_cert_fingerprints:
+                          type: array
+                          items:
+                            type: string
+                x-examples:
+                  Example 1:
+                    - relation:
+                        - delegate_permission/common.handle_all_urls
+                      target:
+                        namespace: android_app
+                        package_name: com.hoot.mobile
+                        sha256_cert_fingerprints:
+                          - >-
+                            83:5A:94:20:C9:52:3B:E8:F1:3F:7C:99:40:8D:7F:6A:AA:F6:8E:8E:B7:0B:4D:AC:EA:BC:57:98:4F:1A:F2:DF
+      operationId: get-.well-known-assetlinks.json
+      x-internal: true
 components:
   schemas:
     user:
@@ -1727,6 +1768,16 @@ components:
       required:
         - conference
         - coremx_join_url
+    features:
+      title: features
+      x-stoplight:
+        id: vozst44f52dgv
+      type: object
+      description: Conference Features
+      properties:
+        join_audio_on:
+          type: boolean
+          default: false
   securitySchemes:
     Authorization:
       type: http
