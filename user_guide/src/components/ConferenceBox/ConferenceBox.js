@@ -24,7 +24,7 @@ const ConferenceBox=()=>
     }
     return(
        <div className="conference-box">
-           <h2 className="conference-heading">No Long Term Contracts.Start Conferencing.</h2>
+           <h2 className="conference-heading">Powerful API Driven Platform, Customise every detail at the conference level.</h2>
            <p className="conference-text">Download our App on your phones or continue on the browser</p>
            <ul className="btn-rows">
            <li className="btn-links"><CustomButton class={'secondary-button mobile'} onClick={openAndroidApp}>Download App on Android</CustomButton></li>

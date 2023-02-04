@@ -18,6 +18,7 @@ const FeatureList = [
     description: (
       <>
         We spawn collaboration engines, conferencing mixers and tools based on demand. Each collaboration session utilises it's own resources.
+        Immortal Conference, Each conference-room is long-lived, join-in any time, and continue from where you left!
       </>
     ),
   },
