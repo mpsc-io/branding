@@ -24,7 +24,7 @@ const redocusaurus = [
        * Options to pass to redoc
        * @see https://github.com/redocly/redoc#redoc-options-object
        */
-      options: { disableSearch: false, downloadDefinitionUrl: '' },
+      options: { disableSearch: false, downloadDefinitionUrl: '/hoot-mx-openapi.yaml' },
       /**
        * Options to pass to override RedocThemeObject
        * @see https://github.com/Redocly/redoc#redoc-theme-object
