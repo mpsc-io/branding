@@ -10,8 +10,6 @@ info:
 servers:
   - url: 'https://devapi.hoot.mx'
     description: Generic
-  - url: 'https://melco-api.hoot.mx'
-    description: Melco
 paths:
   /v1/login:
     post:
@@ -67,7 +65,6 @@ paths:
             default: Generic
             enum:
               - Generic
-              - Melco
               - Speakerbus
             example: Generic
           in: header
@@ -550,6 +547,8 @@ paths:
                   items:
                     type: string
                     example: '["FTzYdTaBpUXhZ@gmail.com", "OiRWiMdPGLSPk@gmail.com"]'
+                features:
+                  $ref: '#/components/schemas/features'
               required:
                 - moderators
                 - participants
@@ -890,6 +889,8 @@ paths:
                   items:
                     type: string
                     example: '["FTzYdTaBpUXhZ@gmail.com", "OiRWiMdPGLSPk@gmail.com"]'
+                features:
+                  $ref: '#/components/schemas/features'
               required:
                 - new_moderators
                 - new_participants
@@ -1256,7 +1257,6 @@ paths:
                         sha256_cert_fingerprints:
                           - '83:5A:94:20:C9:52:3B:E8:F1:3F:7C:99:40:8D:7F:6A:AA:F6:8E:8E:B7:0B:4D:AC:EA:BC:57:98:4F:1A:F2:DF'
       operationId: get-.well-known-assetlinks.json
-      x-internal: true
 components:
   schemas:
     user:
@@ -1415,6 +1415,8 @@ components:
           pattern: '^[a-zA-Z0-9_]*$'
           example: Generic
           minLength: 1
+        features:
+          $ref: '#/components/schemas/features'
       required:
         - id
         - name
@@ -1617,13 +1619,32 @@ components:
     features:
       title: features
       x-stoplight:
-        id: vozst44f52dgv
+        id: crfgh2eskte0i
       type: object
-      description: Conference Features
       properties:
         join_audio_on:
           type: boolean
-          default: false
+          default: true
+          description: user's audio to be on or off at joining
+        join_webcam_on:
+          type: boolean
+          description: user's webcam to be on or off at joining
+        welcome_document:
+          type: string
+          description: URL of the Welcome Document
+        message_for_moderator:
+          type: string
+          description: Special Message for Moderators only
+        branding_skin_color:
+          type: string
+          description: |
+            hex code of color (starting with #)
+          pattern: ^#+
+          example: '#97340F'
+        branding_logo_url:
+          type: string
+          description: Branding Logo URL for Conference
+          default: 'https://storage.googleapis.com/hoot-mx-api/hoot_2000_1012.png'
   securitySchemes:
     Authorization:
       type: http
