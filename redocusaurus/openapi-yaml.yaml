@@ -1775,6 +1775,7 @@ components:
       x-stoplight:
         id: crfgh2eskte0i
       type: object
+      x-examples: {}
       properties:
         join_audio_on:
           type: boolean
@@ -1799,6 +1800,9 @@ components:
           type: string
           description: Branding Logo URL for Conference
           default: https://storage.googleapis.com/hoot-mx-api/hoot_2000_1012.png
+        branding_client_title:
+          type: string
+          description: Title of the HTML5 client
   securitySchemes:
     Authorization:
       type: http
