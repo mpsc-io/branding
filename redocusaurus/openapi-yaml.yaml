@@ -1298,14 +1298,6 @@ paths:
                               type: array
                               items:
                                 type: string
-                x-examples:
-                  Example 1:
-                    applinks:
-                      apps: []
-                      details:
-                        - appID: 4P383YW2V3.com.hoot.IOS
-                          paths:
-                            - /v1/deep_link/*
       operationId: get-apple-app-site-association
       x-internal: true
   /v1/deep_link/{token}/{participant_id}/sip:
@@ -1392,16 +1384,6 @@ paths:
                           type: array
                           items:
                             type: string
-                x-examples:
-                  Example 1:
-                    - relation:
-                        - delegate_permission/common.handle_all_urls
-                      target:
-                        namespace: android_app
-                        package_name: com.hoot.mobile
-                        sha256_cert_fingerprints:
-                          - >-
-                            83:5A:94:20:C9:52:3B:E8:F1:3F:7C:99:40:8D:7F:6A:AA:F6:8E:8E:B7:0B:4D:AC:EA:BC:57:98:4F:1A:F2:DF
       operationId: get-.well-known-assetlinks.json
 components:
   schemas:
