@@ -135,6 +135,31 @@ CASH links up to cloud local registry service and updates about its health and s
 
 ![](./img/callwf.png)
 
+## Fault-Tolerance & Idempotency
+
+CoreMX workflows are deigned to be fault-tolerant & idempotent.
+This means that following operations will result in same outcome, even when the underlying CoreMX has been replaced
+- Conference Creation
+- Conference Join
+- Conference Edits
+
+Fault-tolerance in implemented by making CoreMX a variable input in the call function.
+The Conference Object (CoreMX) is build if several components
+- Participants [1...n]
+- CoreMX
+- Features
+- Settings
+- Credentials
+- Branding Artifacts
+
+When a `join` request is received, the system does sanity checks to make sure the conference is ready to join.
+At that time, if the CoreMX if join link is not same core-mx of Conference, the system will:
+- re-authenticate against the CoreMX of Conference
+- generate signed links for joining
+- update join-link in the `307` response and persist the signed link.
+
+![Fault Tolerance](./img/fault-tolerance.png)
+
 ## SIP Accounts for the user
 
 The CoreMX core distributor algorithm will ensure that every unique user will have a unique numeric SIP `UserID` across all CoreMXes.
