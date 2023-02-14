@@ -4,15 +4,20 @@
 
 }
 
-/* .hero-img-web
+.hero-img-web
 {
-    height: 80vh;
-} */
+    /* height: 40vh; */
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    /* width: 100%; */
+}
 
 @media screen and (max-width: 768px)
 {
     .hero-img-mobile{
-        display: list-item;
+        /* display: list-item; */
+        display: none;
         width: 100%;
         /* height: auto; */
     }   
@@ -23,7 +28,8 @@
 
 @media screen and (max-width: 460px){
     .hero-img-mobile{
-        display: list-item;
+        /* display: list-item; */
+        display: none;
         top: 48vh;
         width: 100%;
         /* height: auto; */

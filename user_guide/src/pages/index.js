@@ -10,6 +10,9 @@ import CustomImage from '../components/CustomImage/CustomImage';
 import ConferenceBox from '../components/ConferenceBox/ConferenceBox';
 import '../main.css';
 import CustomFooter from '../components/CustomFooter/CustomFooter';
+import CreateConferenceBranding from '../components/CreateConferenceBranding/index';
+import FeaturesBranding from "../components/FeaturesBranding/index";
+import LandingPageWebImage from '../components/LandingPageWebImage';
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
@@ -20,11 +23,18 @@ function HomepageHeader() {
     <header>
     <div className="hero-section">
       <div className="hero-content">
-        <h1>Business Conferences made easy with HooT</h1>
+        <h2 className="hero-header-text">Business Conferences made easy with HooT</h2>
         <p className="hero-paragraph">Designed for businesses. Powered by MPSC.io, Cloud-native, API driven collaboration-engine.</p>
         <CustomButton class={'primary-button'} onClick={navigateFooter}>Get Started --&gt;</CustomButton>
+        <h5 className="hero-heading">The Smoothest and Most Developer-Friendly Conferencing Solution. Our APIs are ultimate tools for spawning multiple Conferences at a whim.</h5>
+      <CreateConferenceBranding />
+        <h5 className="hero-heading">With tons of Out of the box customization options, HooT is The Most Customizable Solution for Seamless and Personalized Meetings.</h5>
+        <FeaturesBranding/>
       </div>
+      <div className="hero-images">
       <CustomImage></CustomImage>
+      <LandingPageWebImage></LandingPageWebImage>
+      </div>
     </div>
   </header>
   );

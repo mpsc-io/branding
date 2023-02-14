@@ -77,7 +77,7 @@ export default function HomepageFeatures() {
   return (
     <div className="features">
     <p className="feature-text">Features</p>
-    <h2>Powerful tool to host conference</h2>
+    <h2 className="feature-header">Powerful tool to host conference</h2>
       <div className="feature-container">
         <div className="feature-row">
           {FeatureList.map((props, idx) => (

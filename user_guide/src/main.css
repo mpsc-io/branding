@@ -1,28 +1,47 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Noto+Sans:wght@400;500;700&display=swap');
 
+header{
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
 
 p.copyright-text
 {
   margin-left: 4rem;
   margin-bottom: 2rem;
 }
-
+.hero-paragraph{
+  margin-bottom: 1rem;
+}
 .hero-section
 {
   display: flex;
   margin-right: 4rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
   align-items: center;
   justify-content: space-between;
   margin-left: 4rem;
-  margin-bottom: 2rem;
+  /* margin-bottom: 1rem; */
+}
+.hero-content
+{
+  margin-right: 2rem;
+  /* height: 100vh; */
+}
+.hero-header-text{
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 2em;
+  text-align: left;
+  margin-left: 0rem;
+  margin-top: 0rem;
 }
 
-h1{
-  font-family: 'Noto Sans', sans-serif;
-  font-size: 2.5em;
-  text-align: left;
+.hero-images
+{
+  display: inline-block;
+  justify-content: space-between;
 }
+
 
 p{
   font-family: 'Noto Sans', sans-serif;
@@ -42,8 +61,10 @@ p{
   font-size: 1em;
   font-weight: 500;
   margin-left: 3rem;
-  margin-top: 2rem;
+  /* margin-top: 1rem; */
+  margin-bottom: 1rem;
 }
+
 
 h2{
   font-family: 'Noto Sans', sans-serif;
@@ -102,7 +123,7 @@ p.copyright-text
 {
   margin-top: 2rem;
   margin-left: 4rem;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
   font-family: 'Noto Sans', sans-serif;
   font-size: 1em;
   color: #465566;
@@ -112,7 +133,7 @@ p.copyright-text
 {
   margin-left: 1rem;
   margin-right: 1rem;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
 }
 
 .feature-row
@@ -125,9 +146,26 @@ p.copyright-text
   margin: 0rem 4rem;
 }
 
+.hero-heading
+{
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 0.8em;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
 
+.feature-header
+{
+  margin-top: 0rem;
+  margin-bottom: 1rem;
+}
 @media screen and (max-width: 768px)
 {
+  .feature-header
+  {
+    margin-left: 1rem;
+
+  }
   .hr-line
   {
     margin-left: 4rem;
@@ -158,10 +196,10 @@ p.copyright-text
 }
 
 .features{
-  margin-top: 4rem;
+  /* margin-top: 1rem; */
   margin-left: 3rem;
   margin-right: 3rem;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
 }
 
 .feature-container
@@ -174,9 +212,9 @@ p.copyright-text
   margin-left: 1rem;
 }
 
-h2{
+/* .hero-header-text{
   margin-left: 1rem;
-}
+} */
 
 .hero-content
 {
@@ -184,14 +222,14 @@ h2{
   margin-left: 1rem;
   margin-right: 1rem;
 }
-h1{
+.hero-header-text{
   font-family: 'Noto Sans', sans-serif;
   font-size: 2em;
   margin-right: 2rem;
 }
 .hero-paragraph{
-  margin-bottom: 2rem;
-  margin-right: 2rem;
+  margin-bottom: 1rem;
+  /* margin-right: 2rem; */
 }
 }
 
@@ -199,14 +237,14 @@ h1{
 {
   .hero-section
   {
-    margin-right: 2rem;
+    margin-right: 1rem;
     margin-left: 1rem;
 
   }
-  .hero-content
+  /* .hero-content
   {
     height: 48vh;
-  }
+  } */
 
   .features{
     margin-left: 1rem;
