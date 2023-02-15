@@ -1,10 +1,10 @@
 import React from 'react';
-import './index.css';
+// import './index.css';
 
 const CreateConferenceBranding=()=>{
     return(
         <div className="branding-create-conference">
-        <img src="img/branding_conference.png">
+        <img src="img/create_conference_sample.png">
         </img>
         </div>
     );

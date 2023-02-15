@@ -23,9 +23,15 @@ p.copyright-text
   margin-left: 4rem;
   /* margin-bottom: 1rem; */
 }
+.hero-link
+{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
 .hero-content
 {
   margin-right: 2rem;
+  display: block;
   /* height: 100vh; */
 }
 .hero-header-text{
@@ -174,7 +180,7 @@ p.copyright-text
   .hero-section
   {
     display: block;
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
     margin-right: 3rem;
     margin-left: 3rem;
   }
@@ -237,6 +243,7 @@ p.copyright-text
 {
   .hero-section
   {
+    margin-top: 0rem;
     margin-right: 1rem;
     margin-left: 1rem;
 
