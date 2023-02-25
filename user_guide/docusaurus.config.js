@@ -82,7 +82,7 @@ const config = {
           editUrl: ({locale, blogDirPath, blogPath, permalink}) =>
               `https://github.com/mpsc-io/branding/edit/main/user_guide/${blogDirPath}/${blogPath}`,
           editLocalizedFiles: false,
-          blogTitle: 'Blog title',
+          blogTitle: 'Blogs from HooT',
           blogDescription: 'Blog',
           blogSidebarCount: 5,
           blogSidebarTitle: 'All our posts',
