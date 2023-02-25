@@ -74,7 +74,37 @@ const config = {
           docLayoutComponent: "@theme/DocPage",
           docItemComponent: "@theme/ApiItem"
         },
-        blog: false,
+        blog: {
+          path: 'blog',
+          // Simple use-case: string editUrl
+          // editUrl: 'https://github.com/facebook/docusaurus/edit/main/website/',
+          // Advanced use-case: functional editUrl
+          editUrl: ({locale, blogDirPath, blogPath, permalink}) =>
+              `https://github.com/mpsc-io/branding/edit/main/user_guide/${blogDirPath}/${blogPath}`,
+          editLocalizedFiles: false,
+          blogTitle: 'Blog title',
+          blogDescription: 'Blog',
+          blogSidebarCount: 5,
+          blogSidebarTitle: 'All our posts',
+          routeBasePath: 'blog',
+          include: ['**/*.{md,mdx}'],
+          exclude: [
+            '**/_*.{js,jsx,ts,tsx,md,mdx}',
+            '**/_*/**',
+            '**/*.test.{js,jsx,ts,tsx}',
+            '**/__tests__/**',
+          ],
+          postsPerPage: 10,
+          blogListComponent: '@theme/BlogListPage',
+          blogPostComponent: '@theme/BlogPostPage',
+          blogTagsListComponent: '@theme/BlogTagsListPage',
+          blogTagsPostsComponent: '@theme/BlogTagsPostsPage',
+          rehypePlugins: [],
+          beforeDefaultRemarkPlugins: [],
+          beforeDefaultRehypePlugins: [],
+          truncateMarker: /<!--\s*(truncate)\s*-->/,
+          showReadingTime: true,
+        },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -180,6 +210,7 @@ const config = {
               },
             ]
           },
+          {to: 'blog', label: 'Blog', position: 'right'},
           {
             position: 'right',
             className: 'nav-links',
