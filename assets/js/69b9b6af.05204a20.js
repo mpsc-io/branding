@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkuser_guide=self.webpackChunkuser_guide||[]).push([[768],{22435:e=>{e.exports=JSON.parse('{"permalink":"/blog/tags/trading-communication-system","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blogs from HooT"}')}}]);
