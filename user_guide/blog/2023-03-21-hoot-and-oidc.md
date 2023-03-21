@@ -109,7 +109,7 @@ func useAcceessToken(token string) {
 
 ```
 
-#### Golang Code Sample for Client Credential Generation
+#### Python Code Sample for Client Credential Generation
 
 ```python
 import requests
