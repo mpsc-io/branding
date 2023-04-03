@@ -23,10 +23,10 @@ function HomepageHeader() {
     <header>
     <div className="hero-section">
       <div className="hero-content">
-        <h2 className="hero-header-text">Business Conferences made easy with HooT</h2>
-        <p className="hero-paragraph">Designed for businesses. Powered by MPSC.io, Cloud-native, API driven collaboration-engine.</p>
+        <h2 className="hero-header-text">HooT is UCaaS++, with an API</h2>
+        <p className="hero-paragraph">Designed for xtreme-collaboration. Powered by MPSC.io, Cloud-native, API driven UCaaS Platform.</p>
         <CustomButton class={'primary-button'} onClick={navigateFooter}>Get Started --&gt;</CustomButton>
-        <h5 className="hero-heading">The Smoothest and Most Developer-Friendly Conferencing Solution. Our APIs are ultimate tools for spawning multiple Conferences at a whim.</h5>
+        <h5 className="hero-heading">The Smoothest and Most Developer-Friendly UCaaS. Our APIs are ultimate tools for spawning multiple Conferences at a whim.</h5>
       <CreateConferenceBranding />
       <a href="/api"><CustomButton class={'hero-link'}>Get Started with API --&gt;</CustomButton></a>
         <h5 className="hero-heading">With tons of Out of the box customization options, HooT is The Most Customizable Solution for Seamless and Personalized Meetings.</h5>
@@ -46,7 +46,7 @@ export default function Home() {
   return (
     <Layout
       title={`Hello from ${siteConfig.title}`}
-      description="Infinitely Scalable Conferencing API & System by MPSC.io">
+      description="Infinitely Scalable UCaaS API & System by MPSC.io">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
@@ -55,7 +55,7 @@ export default function Home() {
       <ConferenceBox></ConferenceBox>
       <CustomFooter></CustomFooter>
       <hr className="hr-line"></hr>
-      <p className="copyright-text">Copyright © 2022 MPSC, Inc.</p>
+      <p className="copyright-text">Copyright © 2023 MPSC, Inc.</p>
     </Layout>
   );
 }

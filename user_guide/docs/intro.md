@@ -18,6 +18,20 @@ Get started by **downloading the HooT application on your Android or IOS device*
 - An android or an IOS device
 - An access code provided by the system administrator
 
+# Getting Started with API
+
+- Login into the web-app.
+- Copy your access-token `JWT` using the "Copy Access Token" button.
+- Start using our API
+
+```shell
+JWT="<extract from web-app>"
+curl -v -H "Authorization: $JWT" \
+  --data @/tmp/create_conf.json \
+  -X POST \
+  https://devapi.hoot.mx/v1/create_conference/Kurosawa-Family
+```
+
 <!-- ## Generate a new site
 
 Generate a new Docusaurus site using the **classic template**.
