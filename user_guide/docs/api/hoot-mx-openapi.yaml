@@ -1317,8 +1317,14 @@ paths:
               properties:
                 api_endpoint:
                   type: string
+                  description: https REST endpoint
+                  pattern: ^http
               required:
                 - api_endpoint
+            examples:
+              Example 1:
+                value:
+                  api_endpoint: 'https://your-webservice.io/api/hook'
       description: 'Request to subscribe to a conference''s events. Provide the subscription '
   '/v1/subscription/{subscription_id}':
     parameters:
