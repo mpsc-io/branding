@@ -1155,6 +1155,14 @@ paths:
                               type: array
                               items:
                                 type: string
+                x-examples:
+                  Example 1:
+                    applinks:
+                      apps: []
+                      details:
+                        - appID: 4P383YW2V3.com.hoot.IOS
+                          paths:
+                            - /v1/deep_link/*
       operationId: get-apple-app-site-association
       x-internal: true
   '/v1/deep_link/{token}/{participant_id}/sip':
@@ -1239,7 +1247,105 @@ paths:
                           type: array
                           items:
                             type: string
+                x-examples:
+                  Example 1:
+                    - relation:
+                        - delegate_permission/common.handle_all_urls
+                      target:
+                        namespace: android_app
+                        package_name: com.hoot.mobile
+                        sha256_cert_fingerprints:
+                          - '83:5A:94:20:C9:52:3B:E8:F1:3F:7C:99:40:8D:7F:6A:AA:F6:8E:8E:B7:0B:4D:AC:EA:BC:57:98:4F:1A:F2:DF'
       operationId: get-.well-known-assetlinks.json
+  '/v1/conf/{conf_id}/subscribe':
+    parameters:
+      - schema:
+          type: string
+        name: conf_id
+        in: path
+        required: true
+    post:
+      summary: SubscribeConference
+      operationId: post-v1-conf-conf_id-subscribe
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  openid_configuration:
+                    type: string
+                  expiry_seconds:
+                    type: number
+                  id:
+                    type: string
+                    description: unique id of the subscription
+                  conference_number:
+                    type: string
+                    description: 'conference voice bridge, all event will have this number as conference_id.'
+                required:
+                  - id
+                  - conference_number
+              examples:
+                conf-1:
+                  value:
+                    openid_configuration: 'https://dev-bvjbxxca.us.auth0.com/.well-known/openid-configuration'
+                    expiry_seconds: 259200
+                    id: 00f05eac-7c13-4120-b3d5-b0b0500c62a9
+                    conference_number: '98272818'
+          headers: {}
+        '404':
+          description: Not Found
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authorization
+          description: Auth JWT token from IDP
+        - schema:
+            type: string
+          in: header
+          name: x-hoot-instance
+          description: Instance name of the requesting entity
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                api_endpoint:
+                  type: string
+              required:
+                - api_endpoint
+      description: 'Request to subscribe to a conference''s events. Provide the subscription '
+  '/v1/subscription/{subscription_id}':
+    parameters:
+      - schema:
+          type: string
+        name: subscription_id
+        in: path
+        required: true
+    delete:
+      summary: DeleteSubscription
+      operationId: delete-v1-subscribe
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authorization
+          description: Signed JWT from the IDP
+        - schema:
+            type: string
+          in: header
+          name: x-hoot-instance
+          description: hoot instance
 components:
   schemas:
     user:
