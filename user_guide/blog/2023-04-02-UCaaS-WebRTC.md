@@ -1,7 +1,7 @@
 ---
 slug: UCaaS-WebRTC
 title: Unified Communications as a Service and WebRTC
-authors: admin
+authors: amar
 tags: [hoot, ucaas, webrtc, jwt, kurento, codecs, secure communication, opus]
 ---
 
