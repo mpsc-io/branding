@@ -1,8 +1,8 @@
 ---
 slug: Kurento-DeepDive
-title: Understanding Kurento Ecosystem
+title: Understanding Kurento Ecosystem & Use Cases
 authors: amar
-tags: [hoot, ucaas, webrtc, jwt, kurento, codecs, secure communication, opus]
+tags: [hoot, ucaas, webrtc, kurento, codecs, secure communication, ai, qos, nlp]
 ---
 
 Kurento Media Server (KMS) is an open-source media server that allows developers to build real-time multimedia applications and services. It provides a set of media processing capabilities, including audio and video recording, playback, streaming, and manipulation.
