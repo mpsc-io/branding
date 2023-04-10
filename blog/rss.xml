@@ -9,7 +9,7 @@
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <item>
-            <title><![CDATA[Understanding Kurento Ecosystem]]></title>
+            <title><![CDATA[Understanding Kurento Ecosystem & Use Cases]]></title>
             <link>https://hoot.mx/blog/Kurento-DeepDive</link>
             <guid>Kurento-DeepDive</guid>
             <pubDate>Mon, 10 Apr 2023 00:00:00 GMT</pubDate>
@@ -19,11 +19,12 @@ In summary, WebRTC signaling within Kurento Media Server enables endpoints to ne
             <category>hoot</category>
             <category>ucaas</category>
             <category>webrtc</category>
-            <category>jwt</category>
             <category>kurento</category>
             <category>codecs</category>
             <category>secure communication</category>
-            <category>opus</category>
+            <category>ai</category>
+            <category>qos</category>
+            <category>nlp</category>
         </item>
         <item>
             <title><![CDATA[Unified Communications as a Service and WebRTC]]></title>

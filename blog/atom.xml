@@ -8,7 +8,7 @@
     <subtitle>HooT Blog</subtitle>
     <icon>https://hoot.mx/img/hoot_icon.png</icon>
     <entry>
-        <title type="html"><![CDATA[Understanding Kurento Ecosystem]]></title>
+        <title type="html"><![CDATA[Understanding Kurento Ecosystem & Use Cases]]></title>
         <id>Kurento-DeepDive</id>
         <link href="https://hoot.mx/blog/Kurento-DeepDive"/>
         <updated>2023-04-10T00:00:00.000Z</updated>
@@ -21,11 +21,12 @@ In summary, WebRTC signaling within Kurento Media Server enables endpoints to ne
         <category label="hoot" term="hoot"/>
         <category label="ucaas" term="ucaas"/>
         <category label="webrtc" term="webrtc"/>
-        <category label="jwt" term="jwt"/>
         <category label="kurento" term="kurento"/>
         <category label="codecs" term="codecs"/>
         <category label="secure communication" term="secure communication"/>
-        <category label="opus" term="opus"/>
+        <category label="ai" term="ai"/>
+        <category label="qos" term="qos"/>
+        <category label="nlp" term="nlp"/>
     </entry>
     <entry>
         <title type="html"><![CDATA[Unified Communications as a Service and WebRTC]]></title>
