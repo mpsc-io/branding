@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkuser_guide=self.webpackChunkuser_guide||[]).push([[7650],{2778:s=>{s.exports=JSON.parse('{"label":"opus","permalink":"/blog/tags/opus","allTagsPath":"/blog/tags","count":2}')}}]);
