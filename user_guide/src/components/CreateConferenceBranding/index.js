@@ -1,12 +1,15 @@
 import React from 'react';
+import CodeBlock from '@theme/CodeBlock';
+
 // import './index.css';
 
 const CreateConferenceBranding=()=>{
     return(
-        <div className="branding-create-conference">
-        <img src="img/create_conference_sample.png">
-        </img>
-        </div>
+        <CodeBlock className="language-bash">
+            {"curl -v -H \"Authorization: $JWT\" \\\n" +
+                "        --data @/tmp/create_conf.json -X POST \\\n" +
+                "        https://devapi.hoot.mx/v1/create_conference/Kurosawa-Family"}
+        </CodeBlock>
     );
 }
 

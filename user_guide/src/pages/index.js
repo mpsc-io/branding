@@ -29,7 +29,7 @@ function HomepageHeader() {
         <h5 className="hero-heading">The Smoothest and Most Developer-Friendly UCaaS. Our APIs are ultimate tools for spawning multiple Conferences at a whim.</h5>
       <CreateConferenceBranding />
       <a href="/api"><CustomButton class={'hero-link'}>Get Started with API --&gt;</CustomButton></a>
-        <h5 className="hero-heading">With tons of Out of the box customization options, HooT is The Most Customizable Solution for Seamless and Personalized Meetings.</h5>
+        <h5 className="hero-heading">HooT is The Most Customizable Solution for Seamless and Personalized Meetings.</h5>
         <FeaturesBranding/>
       </div>
       <div className="hero-images">
