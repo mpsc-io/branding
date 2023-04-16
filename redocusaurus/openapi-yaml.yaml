@@ -1873,7 +1873,18 @@ components:
       x-stoplight:
         id: crfgh2eskte0i
       type: object
-      x-examples: {}
+      x-examples:
+        Example 1:
+          join_audio_on: true
+          join_webcam_on: true
+          documents:
+            pdf_list:
+              - name: mydoc.pdf
+                base64_representation: string
+          message_for_moderator: string
+          branding_skin_color: '#97340F'
+          branding_logo_url: https://storage.googleapis.com/hoot-mx-api/hoot_2000_1012.png
+          branding_client_title: string
       properties:
         join_audio_on:
           type: boolean
@@ -1882,9 +1893,8 @@ components:
         join_webcam_on:
           type: boolean
           description: user's webcam to be on or off at joining
-        welcome_document:
-          type: string
-          description: URL of the Welcome Document
+        documents:
+          $ref: '#/components/schemas/conference_documents'
         message_for_moderator:
           type: string
           description: Special Message for Moderators only
@@ -1901,6 +1911,32 @@ components:
         branding_client_title:
           type: string
           description: Title of the HTML5 client
+    conference_documents:
+      title: conference_documents
+      x-stoplight:
+        id: pal0hju57nq6m
+      type: object
+      properties:
+        pdf_list:
+          type: array
+          description: >-
+            list of pdf_document(s), 0th index(1st in the list)is used as
+            default.
+          items:
+            $ref: '#/components/schemas/pdf_document'
+    pdf_document:
+      title: pdf_document
+      x-stoplight:
+        id: tpr4cbeu50cjf
+      type: object
+      properties:
+        name:
+          type: string
+          description: name of the document
+          example: mydoc.pdf
+        base64_representation:
+          type: string
+          description: base64 representation of the document
   securitySchemes:
     Authorization:
       type: http
