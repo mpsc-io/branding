@@ -9,7 +9,7 @@
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <item>
-            <title><![CDATA[Understanding Kurento Ecosystem & Use Cases]]></title>
+            <title><![CDATA[Use-Case Vehicle Fleet Communication using HooT & AI]]></title>
             <link>https://hoot.mx/blog/UseCase-Command-Control</link>
             <guid>UseCase-Command-Control</guid>
             <pubDate>Sun, 16 Apr 2023 00:00:00 GMT</pubDate>
@@ -27,6 +27,8 @@ In practice, you would need to train a more sophisticated model on a large datas
             <category>command-control</category>
             <category>digital-communications</category>
             <category>fleet-management</category>
+            <category>ai</category>
+            <category>artificial-intelligence</category>
         </item>
         <item>
             <title><![CDATA[Understanding Kurento Ecosystem & Use Cases]]></title>
