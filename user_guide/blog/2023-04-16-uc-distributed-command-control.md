@@ -1,8 +1,8 @@
 ---
 slug: UseCase-Command-Control
-title: Understanding Kurento Ecosystem & Use Cases
+title: Use-Case Vehicle Fleet Communication using HooT & AI 
 authors: amar
-tags: [hoot, ucaas, command-control, digital-communications, fleet-management]
+tags: [hoot, ucaas, command-control, digital-communications, fleet-management, ai, artificial-intelligence]
 ---
 
 The Command and Control (C2) market with respect to fleets of vehicles refers to the technology, software, and services that enable military, government, and commercial organizations to manage and control their fleets of vehicles in real-time.
