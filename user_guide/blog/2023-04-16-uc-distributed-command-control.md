@@ -1,7 +1,7 @@
 ---
 slug: UseCase-Command-Control
 title: Understanding Kurento Ecosystem & Use Cases
-authors: pratibha, amar
+authors: amar
 tags: [hoot, ucaas, command-control, digital-communications, fleet-management]
 ---
 
