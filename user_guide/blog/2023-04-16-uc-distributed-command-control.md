@@ -23,7 +23,7 @@ A major fleet management company can automate and relay fleet missions, broadcas
 
 ### Mission
 
-The mission is to send deliveries across a large metropolitan, while enabling
+The mission is to send deliveries across a large metropolitan area, while enabling
 
 - real-time awareness of the current zone
 - update of mission and new workflow adoption
@@ -106,7 +106,7 @@ curl -v -H "Authorization: $JWT" \
 
 #### Client to Vehicle Communication
 
-During the course of mission, upcoming milestones can trigger a communication link to the milestone client.
+During the course of the mission, upcoming milestones can trigger a communication link to the milestone client.
 
 The milestone-client, in case of exceptions and emergencies can join the communication link via web on their mobile devices and communicate about the situation.
 
