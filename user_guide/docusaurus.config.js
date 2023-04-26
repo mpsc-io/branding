@@ -210,7 +210,7 @@ const config = {
               },
             ]
           },
-          {to: 'blog', label: 'Blog', position: 'right'},
+          {to: 'blog', label: 'Blog', position: 'right',className: 'nav-links'},
           {
             position: 'right',
             className: 'nav-links',

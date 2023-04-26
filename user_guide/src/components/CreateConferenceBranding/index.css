@@ -1,0 +1,28 @@
+.language-bash
+{
+    display: flex;
+    /* margin-left: 1rem;
+    margin-right: 1rem; */
+    overflow-x: scroll;
+    max-width: 600px;
+}
+
+@media screen and (max-width: 600px)
+{
+  .language-bash
+  {
+    max-width: 330px;
+  }
+}
+
+/* .code-container {
+    max-width: 80%;
+    overflow-x: auto;
+  }
+  
+  .code {
+    display: block;
+    overflow-x: auto;
+    white-space: pre;
+    max-width: 80%;
+} */

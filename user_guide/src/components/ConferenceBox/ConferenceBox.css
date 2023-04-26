@@ -82,11 +82,11 @@ p.conference-text
     }
 }
 
-@media screen and (max-width: 460px){
+@media screen and (max-width: 600px){
     .conference-box
     {
-        margin-left: 1rem;
-        margin-right: 1rem;
+        margin-left: 2rem;
+        margin-right: 2rem;
     }
     
 }

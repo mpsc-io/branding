@@ -1,9 +1,10 @@
 import React from 'react';
 import CodeBlock from '@theme/CodeBlock';
-// import './index.css';
+import './index.css';
 
 const FeaturesBranding=()=>{
     return(
+        <div className='code-container'>
         <CodeBlock className="language-json">
             {"# Sample Payload for creating a family conference\n" +
                 "{\n" +
@@ -29,6 +30,7 @@ const FeaturesBranding=()=>{
                 "  }\n" +
                 "}"}
         </CodeBlock>
+        </div>
     );
 }
 

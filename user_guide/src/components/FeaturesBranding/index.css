@@ -1,0 +1,24 @@
+.code-container
+{
+    display: flex;
+    max-height: 200px;
+}
+
+.language-json::-webkit-scrollbar{
+display: none;
+}
+
+.language-json
+{
+    max-width: 600px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+}
+
+@media screen and (max-width: 600px)
+{
+    .language-json
+  {
+    max-width: 330px;
+  }
+}

@@ -12,17 +12,28 @@ p.copyright-text
 }
 .hero-paragraph{
   margin-bottom: 1rem;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 1.25em;
+  color: #465566;
 }
 .hero-section
 {
   display: flex;
+  flex-direction: row;
   margin-right: 4rem;
   margin-top: 1rem;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   margin-left: 4rem;
   /* margin-bottom: 1rem; */
 }
+
+.hero-features
+{
+  margin-left: 4rem;
+  margin-right: 4rem;
+}
+
 .hero-link
 {
   padding-top: 1rem;
@@ -31,29 +42,40 @@ p.copyright-text
 .hero-content
 {
   margin-right: 2rem;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: flex-start;
+  align-items: flex-start;
   /* height: 100vh; */
 }
 .hero-header-text{
   font-family: 'Noto Sans', sans-serif;
-  font-size: 2em;
+  font-size: 3.75em;
   text-align: left;
   margin-left: 0rem;
   margin-top: 0rem;
+  word-wrap: break-word;
+
 }
 
 .hero-images
 {
-  display: inline-block;
-  justify-content: space-between;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 
-p{
+/* p{
   font-family: 'Noto Sans', sans-serif;
-  font-size: 1em;
+  font-size: 1.25em;
   color: #465566;
-}
+} */
 
 .container
 {
@@ -155,7 +177,7 @@ p.copyright-text
 .hero-heading
 {
   font-family: 'Noto Sans', sans-serif;
-  font-size: 0.8em;
+  font-size: 1em;
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
@@ -165,7 +187,7 @@ p.copyright-text
   margin-top: 0rem;
   margin-bottom: 1rem;
 }
-@media screen and (max-width: 768px)
+@media screen and (max-width: 1120px)
 {
   .feature-header
   {
@@ -179,10 +201,12 @@ p.copyright-text
   }
   .hero-section
   {
-    display: block;
+    /* display: flex;
+    flex-direction: column; */
     /* margin-top: 1rem; */
     margin-right: 3rem;
     margin-left: 3rem;
+    flex-direction: column;
   }
   .feature-row
 {
@@ -239,7 +263,7 @@ p.copyright-text
 }
 }
 
-@media screen and (max-width: 460px)
+@media screen and (max-width: 600px)
 {
   .hero-section
   {
@@ -259,11 +283,11 @@ p.copyright-text
   }
   .hr-line
   {
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
   }
   p.copyright-text
   {
-  margin-left: 1rem;
+  margin-left: 2rem;
   }
 }

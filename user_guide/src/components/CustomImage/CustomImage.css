@@ -1,6 +1,6 @@
 .hero-img-mobile
 {
-    display: none;
+    /* display: none; */
 
 }
 
@@ -17,12 +17,12 @@
 {
     .hero-img-mobile{
         /* display: list-item; */
-        display: none;
+        /* display: none; */
         width: 100%;
         /* height: auto; */
     }   
     .hero-img-web{
-        display: none;
+        /* display: none; */
     }
 }
 
