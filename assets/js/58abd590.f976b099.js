@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkuser_guide=self.webpackChunkuser_guide||[]).push([[7457],{76045:e=>{e.exports=JSON.parse('{"title":"Basics","slug":"/category/basics","permalink":"/docs/category/basics","navigation":{"next":{"title":"Getting Started with GCP","permalink":"/docs/basics/getting-started-gcp"}}}')}}]);
