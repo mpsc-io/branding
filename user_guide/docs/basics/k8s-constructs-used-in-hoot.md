@@ -138,6 +138,141 @@ Use-cases:
 
 Together, Deployments, Services, and Pods provide a flexible and powerful way to manage containerized applications in Kubernetes.
 
+## Ingress
+
+![ingress](../img/ingress.jpeg)
+
+In Kubernetes, an Ingress is an API object that manages external access to the services in a cluster. It provides a way to route incoming requests to different services based on the requested URL, hostname, or other attributes of the request. The Ingress resource also allows for SSL termination, load balancing, and other features that are commonly needed for serving web applications.
+
+In Google Kubernetes Engine (GKE), an Ingress controller is a software component that runs as a pod in the cluster and handles the requests that come into the cluster's HTTP(S) load balancer. The Ingress controller reads the Ingress resource configuration and uses it to configure the load balancer and routing rules.
+
+To demonstrate how an Ingress works in GKE with a Service, let's consider a simple example. Suppose you have a Kubernetes cluster running on GKE, and you have two Services deployed in the cluster: a frontend Service and a backend Service. The frontend Service exposes a web interface that users can access, and the backend Service provides an API for the frontend to use.
+
+To expose these Services to the public internet, you can create an Ingress resource that routes incoming requests to the appropriate Service based on the requested URL. Here's an example Ingress resource configuration:
+
+```
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-ingress
+  annotations:
+    kubernetes.io/ingress.class: "gce"
+spec:
+  rules:
+  - host: example.com
+    http:
+      paths:
+      - path: /frontend
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend-service
+            port:
+              name: http
+      - path: /api
+        pathType: Prefix
+        backend:
+          service:
+            name: backend-service
+            port:
+              name: http
+```
+
+This Ingress configuration specifies that requests to `example.com/frontend` should be routed to the `frontend-service`, and requests to `example.com/api` should be routed to the `backend-service`. The `pathType: Prefix` option means that the Ingress controller should match any request that starts with the specified path.
+
+To enable SSL termination for the Ingress, you can also add an SSL certificate to the configuration:
+
+```
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-ingress
+  annotations:
+    kubernetes.io/ingress.class: "gce"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  tls:
+  - hosts:
+    - example.com
+    secretName: example-tls
+  rules:
+  - host: example.com
+    http:
+      paths:
+      - path: /frontend
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend-service
+            port:
+              name: http
+      - path: /api
+        pathType: Prefix
+        backend:
+          service:
+            name: backend-service
+            port:
+              name: http
+```
+
+This Ingress configuration specifies that requests to `example.com` should be served over HTTPS using a TLS certificate obtained from the Let's Encrypt CA through the cert-manager tool.
+
+Overall, an Ingress provides a powerful way to expose Kubernetes Services to the public internet, while also providing features such as SSL termination, load balancing, and fine-grained routing rules.
+
+In addition to the basic functionality described above, GKE provides several advanced options for using Ingress that can help you to customize the behavior of your applications and optimize performance. Here are some examples:
+
+1. BackendConfig: The BackendConfig resource is an extension to the Kubernetes Ingress that allows you to customize the behavior of your backends. With BackendConfig, you can set custom request headers, timeouts, and other parameters for your backend services. For example, you can configure a custom response timeout for a backend that takes longer to respond than other backends in the cluster.
+
+2. Ingress annotations: GKE supports several annotations that you can add to your Ingress resources to customize their behavior. Some of the most commonly used annotations include:
+
+- `nginx.ingress.kubernetes.io/ssl-redirect`: Redirect HTTP requests to HTTPS.
+- `kubernetes.io/ingress.class`: Select which ingress controller to use. For example, `nginx` or `gce`.
+- `nginx.ingress.kubernetes.io/rewrite-target`: Rewrite the URL before forwarding it to the backend service.
+- `nginx.ingress.kubernetes.io/affinity`: Control how client requests are distributed to backend pods. For example, using cookie-based session affinity.
+
+3. Ingress controllers: In addition to the default GKE Ingress controller, you can also use third-party Ingress controllers such as Traefik or Istio. These controllers provide additional features such as rate limiting, traffic splitting, and advanced security features.
+
+4. Managed certificates: GKE supports automatic provisioning and renewal of TLS certificates through the Google-managed Certificate Authority. By configuring your Ingress resources to use managed certificates, you can simplify the management of your SSL certificates and ensure that they are always up to date.
+
+   Managed certificates in GCP can be managed using the `gcloud` command-line tool. Here's an example of how to create a managed certificate for a domain using `gcloud`:
+
+    4.1. First, you need to enable the Managed Certificates API by running the following command:
+    
+       ```
+       gcloud services enable managedidentities.googleapis.com
+       ```
+    
+    4.2. Next, create a managed certificate using the following command:
+    
+       ```
+       gcloud beta compute ssl-certificates create [CERTIFICATE_NAME] \
+           --domains=[DOMAIN_NAME] \
+           --project=[PROJECT_ID] \
+           --global \
+           --purpose=MANAGED \
+           --visibility=global
+       ```
+    
+       Replace `[CERTIFICATE_NAME]` with a name for your certificate, `[DOMAIN_NAME]` with the domain name that the certificate will cover, and `[PROJECT_ID]` with the ID of the GCP project you're working in. The `--purpose=MANAGED` flag tells GCP that this is a managed certificate, and the `--visibility=global` flag makes the certificate available globally.
+    
+    4.3. Once the certificate is created, you can assign it to an HTTPS load balancer by adding it to the load balancer's frontend configuration. Here's an example of how to do this:
+    
+       ```
+       gcloud compute target-https-proxies update [TARGET_PROXY_NAME] \
+           --ssl-certificates=[CERTIFICATE_NAME] \
+           --global \
+           --project=[PROJECT_ID]
+       ```
+    
+       Replace `[TARGET_PROXY_NAME]` with the name of the HTTPS target proxy you want to update, and `[CERTIFICATE_NAME]` with the name of the managed certificate you just created.
+    
+    4.4 You can verify that the certificate is working by visiting your website over HTTPS and checking that the browser indicates that the connection is secure.
+    
+    Managed certificates in GCP provide an easy way to obtain and manage SSL certificates for your domains. With `gcloud`, you can create and manage these certificates from the command line, and easily assign them to your load balancers for secure HTTPS connections.
+
+5. Network policies: GKE supports Kubernetes Network Policies, which allow you to control traffic flow between different pods and namespaces in your cluster. By using Network Policies in conjunction with Ingress, you can create fine-grained access controls for your applications.
+
+Overall, these advanced options provide a powerful set of tools for customizing the behavior of your Ingress resources and optimizing the performance and security of your applications running on GKE.
 
 ## Pods in detail
 
