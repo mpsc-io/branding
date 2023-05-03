@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkuser_guide=self.webpackChunkuser_guide||[]).push([[7474],{6407:e=>{e.exports=JSON.parse('{"label":"coredns","permalink":"/blog/tags/coredns","allTagsPath":"/blog/tags","count":1}')}}]);
