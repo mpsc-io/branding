@@ -628,7 +628,31 @@ paths:
               required:
                 - moderators
                 - participants
-            examples: {}
+            examples:
+              Example 1:
+                value:
+                  moderators:
+                    - '["FTzYdTaBpUXhZ@gmail.com", "OiRWiMdPGLSPk@gmail.com"]'
+                  participants:
+                    - '["FTzYdTaBpUXhZ@gmail.com", "OiRWiMdPGLSPk@gmail.com"]'
+                  features:
+                    join_audio_on: true
+                    join_webcam_on: true
+                    documents:
+                      pdf_list:
+                        - name: mydoc.pdf
+                          base64_representation: string
+                    message_for_moderator: string
+                    branding_skin_color: '#97340F'
+                    branding_logo_url: >-
+                      https://storage.googleapis.com/hoot-mx-api/hoot_2000_1012.png
+                    branding_client_title: string
+                    welcome_document: string
+                    invitation:
+                      epoch_start: 0
+                      epoch_end: 0
+                      temporary_users:
+                        - user@example.com
         description: >
           Request body accepts two mandatory parameters: moderators and
           participants. These are list objects containing email id of the
@@ -1842,6 +1866,9 @@ components:
           pattern: ^(?!\s*$).+
           minLength: 1
           example: 23f4c53b-4129-4581-96ca-dcc48cb8cadb
+        epoch_expiry:
+          type: integer
+          description: expiry in seconds from epoch
     partyconf:
       title: userpartyconfconf
       x-stoplight:
@@ -1911,6 +1938,10 @@ components:
         branding_client_title:
           type: string
           description: Title of the HTML5 client
+        welcome_document:
+          type: string
+        invitation:
+          $ref: '#/components/schemas/invite'
     conference_documents:
       title: conference_documents
       x-stoplight:
@@ -1937,6 +1968,25 @@ components:
         base64_representation:
           type: string
           description: base64 representation of the document
+    invite:
+      title: invite
+      x-stoplight:
+        id: n6ymfnn52ffxy
+      type: object
+      description: Invitation Properties to create the ICS invitation
+      properties:
+        epoch_start:
+          type: integer
+          description: seconds since epoch for conference start time
+        epoch_end:
+          type: integer
+          description: seconds since epoch for conference end time
+        temporary_users:
+          type: array
+          description: 'optional: users for an invitation to temporary conference link'
+          items:
+            type: string
+            format: email
   securitySchemes:
     Authorization:
       type: http
