@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkuser_guide=self.webpackChunkuser_guide||[]).push([[5909],{94031:e=>{e.exports=JSON.parse('{"label":"political","permalink":"/blog/tags/political","allTagsPath":"/blog/tags","count":1}')}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkuser_guide=self.webpackChunkuser_guide||[]).push([[2102],{6068:a=>{a.exports=JSON.parse('{"label":"political-campaigns","permalink":"/blog/tags/political-campaigns","allTagsPath":"/blog/tags","count":1}')}}]);
