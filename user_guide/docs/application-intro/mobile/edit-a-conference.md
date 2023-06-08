@@ -11,29 +11,27 @@ slug: /edit-a-conference-mobile
 
 2. Enter the list of email ids of people you want to add as participants under the **Add Participants** textfield as shown in **figure 8.1**.
 
-3. Enter the list of email ids of people you want to add as moderators under the **Add Moderators** textfield as shown in **figure 8.2**.
+3. Enter the list of email ids of people you want to add as moderators under the **Add Moderators** textfield as shown in **figure 8.1**.
 
-4. Enter the name of the person you want to remove from the conference under the **Remove Participants** field as shown in **figure 8.3**. You will get a list of suggestions of participants present in the conference with similar keyword as shown in **figure 8.3**. Select the one you want to remove.
+4. Select the email id of existing participants you want to remove from the conference, as shown in **figure 8.1**. You can type the initial characters of an email id based on which you will get suggestions.
 
-4. Click on the **Save Changes** button to save the changes made to the conference as shown in **figure 8.4**. You should get a confirmation message as shown in **figure 8.5**.
+5. You can also upload a PDF for presentation, by clicking on *Click here* prompt under **Choose a Presentation PDF** prompt. Once you select a PDF it will be displayed under the same prompt as shown in **figure 8.2**.
+
+6. You configure if participants are allowed to speak or if webcam is mandatory by toggling these attributes under the **Features** section as shown in **figure 8.2**.
+
+4. Click on the **Save Changes** button to save the changes made to the conference as shown in **figure 8.2**. You should get a confirmation message as shown in **figure 8.3**.
 
 5. In case of any unexpected error. Contact the system administrator.
 
 ![Figure 8.0](/img/figure5.0.png)
 <center><b>Figure 8.0</b></center>
 
-![Figure 8.1](/img/figure5.1.png)
+![Figure 8.1](/img/Figure8.1.png)
 <center><b>Figure 8.1</b></center>
 
-![Figure 8.2](/img/figure5.2.png)
+![Figure 8.2](/img/Figure8.2.png)
 <center><b>Figure 8.2</b></center>
 
-![Figure 8.3](/img/figure5.3.png)
+![Figure 8.3](/img/Figure8.3.png)
 <center><b>Figure 8.3</b></center>
-
-![Figure 8.4](/img/figure5.4.png)
-<center><b>Figure 8.4</b></center>
-
-![Figure 8.5](/img/figure5.5.png)
-<center><b>Figure 8.5</b></center>
 
