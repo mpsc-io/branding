@@ -10,23 +10,20 @@ slug: /login-web
 
 2. You have the option to log in using **Facebook/Google accounts** as shown in **figure 1.1**. Alternatively, you can sign in manually using the email and password field shown in **figure 1.1.**
 
-3. If you decide to sign in manually, press the **Continue** button after entering your email id and password as shown in figure **figure 1.2**.
+3. If you decide to sign in manually, press the **Continue** button after entering your email id and password.
 
-3. Once you successfully login you will be redirected to your **Dashboard** as shown in figure **figure 1.3**.
+3. Once you successfully login you will be redirected to your **Dashboard** as shown in figure **figure 1.2**.
 
-4. If you are a new user and don’t want to log in using social accounts, navigate to the SignUp page as shown in figure **figure 1.4**.
+4. If you are a new user and don’t want to log in using social accounts, navigate to the SignUp page as shown in **figure 1.3**.
 
-![Figure 1.0](/img/webLogin1.png)
+![Figure 1.0](/img/Figure1.0web.png)
 <center><b>Figure 1.0</b></center>
 
-![Figure 1.1](/img/webLogin2.png)
+![Figure 1.1](/img/Figure1.1web.png)
 <center><b>Figure 1.1</b></center>
 
-![Figure 1.2](/img/webLogin3.png)
+![Figure 1.2](/img/Figure1.2web.png)
 <center><b>Figure 1.2</b></center>
 
-![Figure 1.3](/img/webLogin5.png)
+![Figure 1.3](/img/Figure1.3web.png)
 <center><b>Figure 1.3</b></center>
-
-![Figure 1.4](/img/webLogin4.png)
-<center><b>Figure 1.4</b></center>

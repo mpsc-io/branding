@@ -34,10 +34,10 @@ slug: /conference-connect-with-sip-web
 
 14. You can obtain the **extension number** from the conference invite you received on your email id.
 
-![Figure 8.0](/img/sipWeb1.0.png)
+![Figure 8.0](/img/Figure8.0web.png)
 <center><b>Figure 8.0</b></center>
 
-![Figure 8.1](/img/sipWeb1.2.png)
+![Figure 8.1](/img/Figure8.1web.png)
 <center><b>Figure 8.1</b></center>
 
 ![Figure 8.2](/img/sip1.3.png)
