@@ -194,6 +194,12 @@ const config = {
             label: 'How to use',
             className: 'nav-links'
           },
+          {
+            to: '/docs/category/usage',
+            position: 'left',
+            label: 'Usage',
+            className: 'nav-links'
+          },
 
           // {to: '/api', label: 'API', position: 'left'},
           {
