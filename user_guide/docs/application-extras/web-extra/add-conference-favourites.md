@@ -10,22 +10,19 @@ slug: /add-conference-favourites-web
 
 2. Toggle the **“Add to favorites”** button as shown in **figure 1.0**.
 
-3. The button color will change to yellow signifying conference has been added to favourites as shown in **figure 1.1**.
+3. You will get a message stating *Conference has been marked as favourite* and the button will show green colour as shown in **figure 1.1**.
 
 4. Go back to the **Dashboard.**
 
-5. Click on the **'Favourite'** link as shown in **figure 1.2** to open the Favourites screen.
+5. Click on the **'Favourite'** link to open the Favourites screen.
 
-6. You should see the added conference in the favorites screen as shown in **figure 1.3**.
+6. You should see the added conference in the favourites screen as shown in **figure 1.2**.
 
-![Figure 1.0](/img/addFavWeb1.png)
+![Figure 1.0](/img/fav_conf_web1.png)
 <center><b>Figure 1.0</b></center>
 
-![Figure 1.1](/img/addFavWeb2.png)
+![Figure 1.1](/img/fav_conf_web2.png)
 <center><b>Figure 1.1</b></center>
 
-![Figure 1.2](/img/addFavWeb4.png)
+![Figure 1.2](/img/fav_conf_web3.png)
 <center><b>Figure 1.2</b></center>
-
-![Figure 1.3](/img/addFavWeb3.png)
-<center><b>Figure 1.3</b></center>
