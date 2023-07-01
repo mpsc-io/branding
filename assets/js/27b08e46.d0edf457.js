@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkuser_guide=self.webpackChunkuser_guide||[]).push([[818],{20369:e=>{e.exports=JSON.parse('{"label":"Web Storage","permalink":"/blog/tags/web-storage","allTagsPath":"/blog/tags","count":1}')}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkuser_guide=self.webpackChunkuser_guide||[]).push([[5729],{81764:e=>{e.exports=JSON.parse('{"label":"Multimedia Communication","permalink":"/blog/tags/multimedia-communication","allTagsPath":"/blog/tags","count":1}')}}]);

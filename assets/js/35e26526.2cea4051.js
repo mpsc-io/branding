@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkuser_guide=self.webpackChunkuser_guide||[]).push([[595],{39432:a=>{a.exports=JSON.parse('{"label":"Canvas API","permalink":"/blog/tags/canvas-api","allTagsPath":"/blog/tags","count":1}')}}]);

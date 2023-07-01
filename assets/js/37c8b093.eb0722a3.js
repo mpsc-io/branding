@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkuser_guide=self.webpackChunkuser_guide||[]).push([[8471],{59030:e=>{e.exports=JSON.parse('{"label":"Real-Time Communication","permalink":"/blog/tags/real-time-communication","allTagsPath":"/blog/tags","count":1}')}}]);

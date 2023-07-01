@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkuser_guide=self.webpackChunkuser_guide||[]).push([[8656],{56519:e=>{e.exports=JSON.parse('{"label":"WebSocket API","permalink":"/blog/tags/web-socket-api","allTagsPath":"/blog/tags","count":1}')}}]);
