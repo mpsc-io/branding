@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkuser_guide=self.webpackChunkuser_guide||[]).push([[9766],{85561:e=>{e.exports=JSON.parse('{"label":"Supply Chain Management","permalink":"/blog/tags/supply-chain-management","allTagsPath":"/blog/tags","count":1}')}}]);

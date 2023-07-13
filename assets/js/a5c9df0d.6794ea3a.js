@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkuser_guide=self.webpackChunkuser_guide||[]).push([[5037],{94284:e=>{e.exports=JSON.parse('{"label":"Real-time Collaboration","permalink":"/blog/tags/real-time-collaboration","allTagsPath":"/blog/tags","count":1}')}}]);

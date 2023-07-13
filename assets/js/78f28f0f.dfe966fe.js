@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkuser_guide=self.webpackChunkuser_guide||[]).push([[8408],{99501:s=>{s.exports=JSON.parse('{"label":"Industry 4.0","permalink":"/blog/tags/industry-4-0","allTagsPath":"/blog/tags","count":1}')}}]);
