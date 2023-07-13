@@ -186,6 +186,8 @@ I --> J[Detected Sound Anomalies]
 J --> F
 ```
 
+![](./2023-07-13-HooT-Warehouse-Automation/model.png)
+
 In terms of code, we could create an AI system that combines both image and sound recognition capabilities. The following pseudocode gives a rough idea:
 
 ```python
@@ -249,7 +251,7 @@ F --> G[Data Feedback to HooT.mx]
 G --> B
 ```
 
-![](2023-07-13-HooT-Warehouse-Automation/relationship.png)
+![](2023-07-13-HooT-Warehouse-Automation/process_ax.png)
 
 In terms of code, you might create a system that leverages ML for process optimization like this:
 
