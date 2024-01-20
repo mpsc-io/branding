@@ -1173,6 +1173,80 @@ paths:
           name: x-hoot-instance
           description: Instance name of the requesting entity
           required: true
+  /v1/conf/{conf_id}/users:
+    parameters:
+      - schema:
+          type: string
+          example: 6e19e88d-634f-4872-826b-2d26503caba1
+          pattern: ^(?!\s*$).+
+          minLength: 1
+        name: conf_id
+        in: path
+        required: true
+        description: unique conference id used to identify a conference.
+    get:
+      summary: AllConferenceUsers
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    email:
+                      type: string
+                  required:
+                    - name
+                    - email
+                example:
+                  - name: ABC
+                    email: abc@gmail.com
+                  - name: DEF
+                    email: def@gmail.com
+      operationId: get-v1-conf-conf_id-users
+      description: >-
+        Use HooT's AllConferenceUsers API to fetch the list of all participants
+        of a conference. The API takes conference ID as `conf_id` as a path
+        param to identify the conference.
+
+        If a conference is found with the given conference ID, the API will
+        return an Array of JSON objects containing the name and email of
+        participants in the conference respectively.
+
+        `Authorization-Token` and `x-hoot-instance` that signifies the instance
+        name are passed as headers.
+
+        Conference ID as `conf_id` is passed as a path parameter to uniquely
+        identify the conference
+      parameters:
+        - schema:
+            type: string
+            example: >-
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+            pattern: (^[\w-]*\.[\w-]*\.[\w-]*$)
+            minLength: 1
+          in: header
+          name: Authorization
+          description: Auth JWT token from IDP
+          required: true
+        - schema:
+            type: string
+            default: Generic
+            example: Generic
+            enum:
+              - Generic
+              - Speakerbus
+              - Melco
+          in: header
+          name: x-hoot-instance
+          description: Instance name of the requesting entity
+          required: true
   /v1/x:
     get:
       summary: XformByQueryParam
